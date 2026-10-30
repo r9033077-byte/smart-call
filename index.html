@@ -113,28 +113,16 @@
     .dutyoff-icon { width: 70px; height: 70px; background: rgba(239, 68, 68, 0.15); border: 2px solid #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
 
     /* Layout & Utilities */
-
-    .clickable-summary { cursor:pointer; transition:transform .15s ease,border-color .15s ease; }
-    .clickable-summary:hover, .clickable-summary:focus { border-color:#38bdf8; transform:translateY(-1px); outline:2px solid rgba(56,189,248,.25); }
-    .category-list-overlay { display:none; position:fixed; inset:0; z-index:3000000; background:rgba(2,6,23,.88); backdrop-filter:blur(5px); align-items:center; justify-content:center; padding:12px; }
-    .category-list-card { width:min(100%,480px); max-height: min(88vh,760px); display:flex; flex-direction:column; background:#0f172a; border:1px solid #38bdf8; border-radius:14px; box-shadow:0 18px 55px rgba(0,0,0,.55); overflow:hidden; }
-    .category-list-header { position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px; background:#1e293b; border-bottom:1px solid #334155; }
-    .category-list-heading { font-size:15px; font-weight:800; color:#f8fafc; }
-    .category-list-tools { display:flex; align-items:center; gap:6px; }
-    .stay-toggle { border:0; border-radius:7px; padding:7px 10px; font-size:11px; font-weight:800; cursor:pointer; color:white; background:#475569; white-space:nowrap; }
-    .stay-toggle.on { background:#16a34a; }
-    .category-close { border:0; border-radius:7px; background:#ef4444; color:white; padding:7px 10px; font-weight:800; cursor:pointer; }
-    .category-number-list { overflow-y:auto; padding:9px; display:flex; flex-direction:column; gap:7px; }
-    .category-number-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 10px; border-radius:9px; background:#1e293b; border:1px solid #334155; }
-    .category-number-text { min-width:0; overflow-wrap:anywhere; font-family:monospace; font-size:13px; color:#e2e8f0; }
-    .category-call-btn { flex-shrink:0; background:#22c55e; color:#052e16; border:0; border-radius:7px; padding:8px 12px; text-decoration:none; font-size:12px; font-weight:900; cursor:pointer; }
-    .category-empty { text-align:center; padding:30px 12px; color:#94a3b8; font-size:13px; }
-    .time-alarm-banner { display:none; position:fixed; top:14px; left:50%; transform:translateX(-50%); width:min(94vw,480px); z-index:5000000; background:#7f1d1d; border:2px solid #f87171; color:#fff; padding:14px; border-radius:12px; box-shadow:0 10px 40px rgba(0,0,0,.6); text-align:center; animation:alarmPulse .6s infinite alternate; }
-    .time-alarm-banner strong { display:block; font-size:17px; margin-bottom:5px; }
-    .time-alarm-banner span { font-size:14px; overflow-wrap:anywhere; }
-    .time-alarm-banner button { margin-top:8px; border:0; border-radius:7px; padding:6px 12px; font-weight:800; cursor:pointer; background:#fff; color:#7f1d1d; }
-    @keyframes alarmPulse { from { box-shadow:0 0 8px rgba(248,113,113,.3); } to { box-shadow:0 0 26px rgba(248,113,113,.9); } }
-    @media(max-width:420px){ .category-list-overlay{padding:8px}.category-list-header{padding:9px}.category-list-heading{font-size:13px}.stay-toggle,.category-close{padding:7px 8px;font-size:10px}.category-number-row{padding:8px}.category-number-text{font-size:12px} }
+    .clickable-summary { cursor: pointer; transition: transform .15s ease, border-color .15s ease; }
+    .clickable-summary:hover, .clickable-summary:focus { border-color: #38bdf8; transform: translateY(-1px); outline: 2px solid rgba(56,189,248,.25); }
+    .category-list-overlay { display: none; position: fixed; inset: 0; z-index: 3000000; background: rgba(2,6,23,.88); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 12px; }
+    .category-list-card { width: min(100%, 480px); max-height: min(88vh, 760px); display: flex; flex-direction: column; background: #0f172a; border: 1px solid #38bdf8; border-radius: 14px; box-shadow: 0 18px 55px rgba(0,0,0,.55); overflow: hidden; }
+    .category-list-header { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px; background: #1e293b; border-bottom: 1px solid #334155; }
+    .category-list-heading { font-size: 15px; font-weight: 800; color: #f8fafc; }
+    .category-close { border: 0; border-radius: 7px; background: #ef4444; color: white; padding: 7px 10px; font-weight: 800; cursor: pointer; }
+    .category-number-list { overflow-y: auto; padding: 9px; display: flex; flex-direction: column; gap: 7px; }
+    .category-number-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 10px; border-radius: 9px; background: #1e293b; border: 1px solid #334155; }
+    .category-empty { text-align: center; padding: 30px 12px; color: #94a3b8; font-size: 13px; }
 
     .summary-section { margin-bottom: 2px; display: flex; flex-direction: column; gap: 4px; }
     .summary-grid { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; overflow-y: hidden; padding: 0 0 6px; margin-bottom: 0; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #475569 #0f172a; }
@@ -191,8 +179,8 @@
     .sub-btn.time { background: #0f172a; color: #eab308; border-color: #eab308; }
     .sub-btn.not-pick { background: #0f172a; color: #f97316; border-color: #f97316; }
     .sub-btn.working { background: #0f172a; color: #a855f7; border-color: #a855f7; }
-    .sub-btn.coming { background:#0f172a; color:#06b6d4; border-color:#06b6d4; }
-    .sub-btn.bihar { background:#0f172a; color:#f59e0b; border-color:#f59e0b; }
+    .sub-btn.coming { background: #0f172a; color: #06b6d4; border-color: #06b6d4; }
+    .sub-btn.bihar { background: #0f172a; color: #f59e0b; border-color: #f59e0b; }
 
     .tab-content { display: none; }
     .tab-content.active { display: block; }
@@ -208,18 +196,12 @@
 
     .admin-container { display: grid; grid-template-columns: minmax(280px, .92fr) minmax(420px, 1.08fr); gap: 10px; margin-top: 4px; align-items: start; }
     #tab-admin .admin-container > .admin-card { align-self: start; min-width: 0; padding: 10px; gap: 7px; }
-    #tab-admin .admin-container > .admin-card:first-child > button { flex: 0 0 auto; width: 100%; min-height: 36px; height: 36px; padding: 7px 10px !important; margin-top: 2px; }
-    #tab-admin .admin-container > .admin-card:first-child input { min-height: 31px; padding: 6px 8px; }
-    #tab-admin .admin-container > .admin-card:nth-child(2) .admin-form-group { min-width: 0; }
-    #tab-admin .admin-container > .admin-card:nth-child(2) button { flex: 0 0 auto; min-height: 30px; }
-    #tab-admin .admin-container > .admin-card:nth-child(2) small { line-height: 1.3; }
     @media (max-width: 1000px) { .admin-container { grid-template-columns: 1fr; } }
-    @media (max-width: 820px) { .admin-container { grid-template-columns: 1fr; } }
     .admin-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
     .admin-card.full-width { grid-column: 1 / -1; }
-    .admin-feedback-box { background:#0f172a;border:1px solid #334155;border-radius:8px;padding:8px;min-width:0; }
-    .admin-feedback-list { max-height:180px;overflow-y:auto;font-size:10px;color:#cbd5e1;white-space:pre-wrap;word-break:break-word;line-height:1.5;margin-top:6px; }
-    .admin-feedback-stat { background:#0f172a;border:1px solid #334155;border-radius:7px;padding:8px;font-size:10px;color:#cbd5e1; }
+    .admin-feedback-box { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 8px; min-width: 0; }
+    .admin-feedback-list { max-height: 180px; overflow-y: auto; font-size: 10px; color: #cbd5e1; white-space: pre-wrap; word-break: break-word; line-height: 1.5; margin-top: 6px; }
+    .admin-feedback-stat { background: #0f172a; border: 1px solid #334155; border-radius: 7px; padding: 8px; font-size: 10px; color: #cbd5e1; }
 
     .admin-card-title { color: #38bdf8; font-size: 13px; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 6px; display: flex; align-items: center; justify-content: space-between; }
     .admin-form-group { display: flex; flex-direction: column; gap: 3px; }
@@ -236,44 +218,29 @@
     .game-center-btn { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #0f172a; width: 56px; height: 56px; border-radius: 50%; border: 3px solid #0f172a; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(56, 189, 248, 0.55); margin-top: -22px; cursor: pointer; font-weight: 800; }
     .game-center-btn i { font-size: 20px; margin-bottom: 2px; }
     .game-center-btn span { font-size: 8px; letter-spacing: .5px; }
-    .game-modal { display:none; position:fixed; inset:0; width:100%; height:100%; box-sizing:border-box; background:rgba(5,8,20,.98); z-index:99999; flex-direction:column; align-items:center; justify-content:center; padding:8px; overflow:hidden; overscroll-behavior:none; }
-    .game-box { width:min(430px,100%); height:min(690px,calc(100% - 4px)); max-height:100%; box-sizing:border-box; overflow:hidden; background:linear-gradient(145deg,#1e293b,#0f172a); border:1px solid #a855f7; border-radius:16px; padding:9px; box-shadow:0 0 35px rgba(168,85,247,.28); display:flex; flex-direction:column; }
-    .game-header { flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:7px; }
-    .game-title { color:#d8b4fe; font-size:15px; font-weight:900; }
-    .game-close { background:none; border:0; color:#ef4444; font-size:19px; cursor:pointer; padding:4px 7px; }
-    .game-menu { flex:1; min-height:0; display:grid; grid-template-columns:repeat(3,1fr); gap:7px; align-items:center; }
-    .game-choice { border:1px solid #475569; background:#0f172a; color:#fff; border-radius:13px; min-height:92px; padding:9px 5px; cursor:pointer; font-weight:800; font-size:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; transition:.18s; }
-    .game-choice i { font-size:23px; color:#d8b4fe; }
-    .game-choice:hover { border-color:#a855f7; transform:translateY(-1px); }
-    .game-stage { display:none; flex:1; min-height:0; flex-direction:column; overflow:hidden; }
-    .game-hud { flex:0 0 auto; display:grid; grid-template-columns:1fr 1fr 1fr auto; justify-content:space-between; gap:5px; margin-bottom:5px; }
-    .game-stat { min-width:0; background:#0b1120; border:1px solid #334155; border-radius:7px; padding:4px; text-align:center; font-size:9px; color:#cbd5e1; line-height:1.15; }
-    .game-restart-top { width:54px; height:38px; border:1px solid #a855f7; border-radius:8px; background:linear-gradient(180deg,#7e22ce,#4c1d95); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; font-weight:900; cursor:pointer; touch-action:manipulation; box-shadow:0 3px 10px rgba(168,85,247,.25); }
-    .game-restart-top span { font-size:7px; letter-spacing:.3px; }
-    .game-control, .game-secondary button, .game-restart-top { -webkit-user-select:none; user-select:none; }
-    .game-control:focus-visible, .game-secondary button:focus-visible, .game-restart-top:focus-visible { outline:2px solid #d8b4fe; outline-offset:2px; }
-    .game-canvas-wrap { flex:1; min-height:0; display:flex; justify-content:center; align-items:center; background:#020617; border:1px solid #334155; border-radius:10px; padding:4px; overflow:hidden; }
-    #gameCanvas { width:auto; height:auto; max-width:100%; max-height:100%; aspect-ratio:4/5; background:#020617; border-radius:7px; display:block; touch-action:none; }
-    .game-controls { flex:0 0 auto; display:grid; grid-template-columns:repeat(5,1fr); gap:5px; margin-top:5px; }
-    .game-control { background:linear-gradient(180deg,#475569,#1e293b); color:#fff; border:1px solid #64748b; border-radius:8px; height:38px; padding:4px; font-size:15px; font-weight:900; cursor:pointer; touch-action:manipulation; transition:transform .08s,background .12s; }
-    .game-control.brake-control { background:linear-gradient(180deg,#b91c1c,#7f1d1d); border-color:#ef4444; font-size:12px; }
-    .game-control.brake-control.active { background:linear-gradient(180deg,#ef4444,#991b1b); transform:scale(.96); }
-    .game-control:active { transform:scale(.96); background:#475569; }
-    .game-secondary { flex:0 0 auto; display:flex; gap:5px; margin-top:5px; }
-    .game-secondary button { flex:1; min-width:0; height:32px; padding:4px; border:0; border-radius:7px; cursor:pointer; font-weight:800; font-size:10px; }
-    .game-back { background:#334155; color:#fff; }
-    .game-start { background:#a855f7; color:#fff; }
-    .game-note { flex:0 0 auto; text-align:center; color:#94a3b8; font-size:9px; line-height:1.2; margin-top:4px; min-height:11px; }
-    @media (max-width:380px){ .game-box{padding:7px;border-radius:13px}.game-choice{min-height:78px}.game-control{height:34px}.game-note{font-size:8px} }
+    .game-modal { display: none; position: fixed; inset: 0; width: 100%; height: 100%; box-sizing: border-box; background: rgba(5,8,20,.98); z-index: 99999; flex-direction: column; align-items: center; justify-content: center; padding: 8px; overflow: hidden; }
+    .game-box { width: min(430px, 100%); height: min(690px, calc(100% - 4px)); background: linear-gradient(145deg, #1e293b, #0f172a); border: 1px solid #a855f7; border-radius: 16px; padding: 9px; box-shadow: 0 0 35px rgba(168,85,247,.28); display: flex; flex-direction: column; }
+    .game-header { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .game-title { color: #d8b4fe; font-size: 15px; font-weight: 900; }
+    .game-close { background: none; border: 0; color: #ef4444; font-size: 19px; cursor: pointer; padding: 4px 7px; }
+    .game-menu { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; align-items: center; }
+    .game-choice { border: 1px solid #475569; background: #0f172a; color: #fff; border-radius: 13px; min-height: 92px; padding: 9px 5px; cursor: pointer; font-weight: 800; font-size: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+    .game-choice i { font-size: 23px; color: #d8b4fe; }
+    .game-stage { display: none; flex: 1; flex-direction: column; overflow: hidden; }
+    .game-hud { display: grid; grid-template-columns: 1fr 1fr 1fr auto; justify-content: space-between; gap: 5px; margin-bottom: 5px; }
+    .game-stat { background: #0b1120; border: 1px solid #334155; border-radius: 7px; padding: 4px; text-align: center; font-size: 9px; color: #cbd5e1; }
+    .game-restart-top { width: 54px; height: 38px; border: 1px solid #a855f7; border-radius: 8px; background: linear-gradient(180deg, #7e22ce, #4c1d95); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 900; cursor: pointer; }
+    .game-restart-top span { font-size: 7px; }
+    .game-canvas-wrap { flex: 1; display: flex; justify-content: center; align-items: center; background: #020617; border: 1px solid #334155; border-radius: 10px; padding: 4px; overflow: hidden; }
+    #gameCanvas { width: auto; height: auto; max-width: 100%; max-height: 100%; aspect-ratio: 4/5; background: #020617; border-radius: 7px; display: block; }
+    .game-controls { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-top: 5px; }
+    .game-control { background: linear-gradient(180deg, #475569, #1e293b); color: #fff; border: 1px solid #64748b; border-radius: 8px; height: 38px; font-size: 15px; font-weight: 900; cursor: pointer; }
+    .game-secondary { display: flex; gap: 5px; margin-top: 5px; }
+    .game-secondary button { flex: 1; height: 32px; border: 0; border-radius: 7px; cursor: pointer; font-weight: 800; font-size: 10px; }
+    .game-back { background: #334155; color: #fff; }
+    .game-start { background: #a855f7; color: #fff; }
+    .game-note { text-align: center; color: #94a3b8; font-size: 9px; margin-top: 4px; }
     #toast { position: fixed; bottom: 75px; left: 50%; transform: translateX(-50%); background: #22c55e; color: #0f172a; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; z-index: 100000; display: none; }
-
-    .top-slider { height: 82px !important; min-height: 0 !important; padding-top: 6px !important; padding-bottom: 6px !important; box-sizing: border-box; }
-    .summary-box { height: 82px !important; min-height: 0 !important; padding: 5px !important; box-sizing: border-box; }
-    .summary-list { height: 44px !important; min-height: 0 !important; box-sizing: border-box; }
-    .summary-header { margin-bottom: 2px !important; }
-    .inputs-row .add-box { height: 88px !important; min-height: 0 !important; padding: 6px !important; box-sizing: border-box; overflow: hidden; }
-    .inputs-row .add-box textarea { height: 46px !important; min-height: 0 !important; max-height: 46px !important; box-sizing: border-box; padding: 5px !important; }
-    .inputs-row .add-box .btn-row { gap: 3px; margin-top: 3px; }
   </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
@@ -307,20 +274,10 @@
     </div>
   </div>
 
-  <!-- SOUND ALARM MODAL -->
-  <div id="scheduleAlarmOverlay" style="display:none;position:fixed;inset:0;z-index:100050;background:rgba(2,6,23,.92);align-items:center;justify-content:center;padding:18px;">
-    <div style="width:100%;max-width:360px;text-align:center;background:#172033;border:2px solid #f59e0b;border-radius:18px;padding:22px;color:#fff;box-shadow:0 0 35px #f59e0b55;">
-      <div style="font-size:42px;">⏰</div><h3 id="scheduleAlarmTitle" style="color:#fbbf24;margin:8px 0;font-size:20px;">Schedule Alarm</h3>
-      <p id="scheduleAlarmMessage" style="color:#e2e8f0;font-size:13px;line-height:1.6;">Time ho gaya hai.</p>
-      <button onclick="dismissScheduleAlarm()" style="margin-top:10px;background:#f59e0b;color:#111827;border:0;border-radius:10px;padding:11px 18px;font-weight:bold;width:100%;cursor:pointer;">Dismiss Alarm</button>
-      <small style="display:block;color:#94a3b8;margin-top:8px;">Alarm 10 seconds mein apne aap band ho jayega.</small>
-    </div>
-  </div>
-
   <!-- Top Header Bar -->
   <div class="top-slider" id="topSliderBar">
     <div style="display: flex; align-items: center; flex: 1; overflow: hidden;">
-      <div class="calling-man-icon" id="sliderIcon"><i class="fas fa-desktop"></i></div>
+      <div class="calling-man-icon"><i class="fas fa-desktop"></i></div>
       <div class="computer-wave-flow"><span></span><span></span><span></span><span></span></div>
       <div class="slider-track"><div class="slider-text" id="headerAppTitle">Smart Dialer</div></div>
     </div>
@@ -589,11 +546,11 @@
         </div>
         <div class="game-canvas-wrap"><canvas id="gameCanvas" width="400" height="500"></canvas></div>
         <div class="game-controls">
-          <button class="game-control" aria-label="Left" onclick="gameControl('left')">◀</button>
-          <button class="game-control" aria-label="Up" onclick="gameControl('up')">▲</button>
-          <button class="game-control" aria-label="Right" onclick="gameControl('right')">▶</button>
-          <button class="game-control" aria-label="Down" onclick="gameControl('down')">▼</button>
-          <button class="game-control brake-control" id="gameBrake" aria-label="Brake">BRAKE</button>
+          <button class="game-control" onclick="gameControl('left')">◀</button>
+          <button class="game-control" onclick="gameControl('up')">▲</button>
+          <button class="game-control" onclick="gameControl('right')">▶</button>
+          <button class="game-control" onclick="gameControl('down')">▼</button>
+          <button class="game-control" id="gameBrake" onclick="gameControl('brake')">BRAKE</button>
         </div>
         <div class="game-secondary">
           <button class="game-back" onclick="showGameMenu()">🎮 Games</button>
@@ -614,7 +571,7 @@
     <button class="nav-item" id="nav-admin" style="display:none;" onclick="switchTab('tab-admin', this)"><i class="fas fa-user-shield"></i><span>Admin</span></button>
   </nav>
 
-  <!-- PWA Install Prompt Script -->
+  <!-- PWA Script -->
   <script>
     let deferredPrompt = null;
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -657,9 +614,6 @@
     let numbersData = JSON.parse(localStorage.getItem('dialerNumbersData') || '[]');
     let callHistory = JSON.parse(localStorage.getItem('dialerCallHistory') || '[]');
     let currentAuthMode = 'USER';
-    const scheduledTimeAlarms = new Map();
-    let alarmAudioContext = null;
-    let activeAlarmStopTimer = null;
 
     function getUsersDB() {
       const stored = localStorage.getItem('systemUsersDB');
@@ -672,22 +626,19 @@
       }
     }
 
-    function saveUsersDB(dbData) { 
-      localStorage.setItem('systemUsersDB', JSON.stringify(dbData));
-      if (typeof firebase !== 'undefined' && firebase.apps.length) {
-        firebase.database().ref('systemUsersDB').set(dbData);
-      }
-    }
+    function saveUsersDB(dbData) {
+      const safeData = (dbData && typeof dbData === 'object' && !Array.isArray(dbData)) ? dbData : {};
+      localStorage.setItem('systemUsersDB', JSON.stringify(safeData));
 
-    function getBlacklistedPins() {
-      const stored = localStorage.getItem('blacklistedPins');
-      if (!stored) return [];
-      try {
-        const parsed = JSON.parse(stored);
-        return Array.isArray(parsed) ? parsed : [];
-      } catch (e) {
-        return [];
+      if (typeof firebase !== 'undefined' && firebase.apps.length) {
+        return firebase.database().ref('systemUsersDB').set(safeData)
+          .catch(error => {
+            console.error('Firebase save failed:', error);
+            showToast('Cloud sync failed.');
+            throw error;
+          });
       }
+      return Promise.resolve();
     }
 
     function getActiveUserPin() { return localStorage.getItem('activeUserPin') || ''; }
@@ -714,7 +665,7 @@
       if (typeof firebase !== 'undefined' && firebase.apps.length) {
         firebase.database().ref('systemUsersDB').on('value', snapshot => {
           const cloudDb = snapshot.val();
-          if (cloudDb) {
+          if (cloudDb && typeof cloudDb === 'object') {
             localStorage.setItem('systemUsersDB', JSON.stringify(cloudDb));
             if (localStorage.getItem('userRole') === 'USER') {
               const pin = getActiveUserPin();
@@ -724,7 +675,7 @@
                   localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole'); localStorage.removeItem('activeUserPin');
                   const splash = document.getElementById('splashScreen'); if (splash) splash.style.display = 'flex';
                   updateLoginUi();
-                  showDutyOffModal('Admin ne aapki duty OFF kar di hai. Login ke liye Admin se ON karwayein.');
+                  showDutyOffModal('Admin ne aapki duty OFF kar di hai.');
                 } else {
                   numbersData = Array.isArray(activeUser.leads) ? activeUser.leads : [];
                   callHistory = Array.isArray(activeUser.callHistory) ? activeUser.callHistory : [];
@@ -837,16 +788,31 @@
     }
 
     function markAsCalled(index) {
-      if (numbersData[index]) {
-        numbersData[index].called = true;
-        callHistory.unshift({
-          number: numbersData[index].number,
-          time: new Date().toLocaleTimeString() + ' ' + new Date().toLocaleDateString()
-        });
+      const lead = numbersData[index];
+      if (!lead) return;
+
+      lead.called = true;
+      const now = new Date();
+      const time = now.toLocaleTimeString() + ' ' + now.toLocaleDateString();
+      callHistory.unshift({ number: lead.number, time });
+
+      if (localStorage.getItem('userRole') === 'USER') {
+        const pin = getActiveUserPin();
+        const db = getUsersDB();
+        if (pin && db[pin]) {
+          db[pin].leads = numbersData;
+          db[pin].callHistory = callHistory;
+          db[pin].lastCallAt = now.toISOString();
+          saveUsersDB(db).catch(() => {});
+        } else {
+          saveNumbersData();
+          saveCallHistory();
+        }
+      } else {
         saveNumbersData();
         saveCallHistory();
-        renderAll();
       }
+      renderAll();
     }
 
     function setCategory(index, category) {
@@ -860,7 +826,7 @@
           } else { return; }
         } else {
           numbersData[index].category = category;
-          showToast('Categorized & Moved to Box! 📋');
+          showToast('Categorized & Moved! 📋');
         }
         saveNumbersData();
         renderAll();
@@ -1097,13 +1063,6 @@
       }
 
       const db = getUsersDB();
-      const blacklisted = getBlacklistedPins();
-
-      if (blacklisted.includes(pin)) {
-        alert('Yeh user account Admin dwara permanent delete ho chuka hai.');
-        return;
-      }
-
       if (!db[pin]) {
         alert('Invalid PIN!');
         return;
@@ -1112,7 +1071,7 @@
       const user = db[pin];
       if (user.loginAccessMode === 'manual' && user.manualDutyOn !== true) {
         closePinModal();
-        showDutyOffModal('Admin ne aapki duty OFF rakhi hai. Login ke liye Admin se ON karwayein.');
+        showDutyOffModal('Admin ne aapki duty OFF rakhi hai.');
         return;
       }
 
@@ -1193,7 +1152,7 @@
       lists.innerHTML = '';
       const total = document.createElement('div');
       total.className = 'admin-feedback-stat';
-      total.innerHTML = `<b style="font-size:16px;color:#38bdf8;">${rows.length}</b><br>Total Categorized Feedback`;
+      total.innerHTML = `<b style="font-size:16px;color:#38bdf8;">${rows.length}</b><br>Total Feedback`;
       summary.appendChild(total);
 
       categories.forEach(cat => {
@@ -1243,9 +1202,9 @@
     function copyAllAgentFeedback(category) {
       const { categories, rows } = getAllAgentFeedback();
       const chosen = category ? rows.filter(row => row.category === category) : rows;
-      if (!chosen.length) { showToast('Copy karne ke liye feedback data nahi hai!'); return; }
+      if (!chosen.length) { showToast('Copy karne ke liye data nahi hai!'); return; }
       const text = chosen.map(r => String(r.number || '').trim()).filter(Boolean).join('\n');
-      navigator.clipboard.writeText(text).then(() => showToast('Feedback Data Copied! 📋'));
+      navigator.clipboard.writeText(text).then(() => showToast('Data Copied! 📋'));
     }
 
     function renderAdminUserLists() {
@@ -1287,7 +1246,6 @@
           <div style="display:flex; gap:4px; margin-top:6px; flex-wrap:wrap;">
             <button style="flex:1; padding:5px; font-size:10px; border:0; border-radius:5px; cursor:pointer; font-weight:bold; background:${u.manualDutyOn===true?'#ef4444':'#22c55e'}; color:${u.manualDutyOn===true?'#fff':'#052e16'};" onclick="adminToggleManualDuty('${pin}')">${u.manualDutyOn===true?'⏻ Manual OFF':'▶ Manual ON'}</button>
             <button class="btn-excel" style="flex:1; padding:5px; font-size:10px;" onclick="prepareAdminData('${pin}')">📤 Send Data</button>
-            <button class="btn-primary" style="flex:1; padding:5px; font-size:10px;" onclick="viewAdminUser('${pin}')">👁 Activity</button>
             <button style="background:#ef4444; color:#fff; border:none; padding:5px 8px; border-radius:5px; font-size:10px; cursor:pointer;" onclick="deleteAdminUser('${pin}')">🗑</button>
           </div>
         `;
@@ -1340,20 +1298,29 @@
 
     function adminSaveUser() {
       const name = document.getElementById('adminAgentName').value.trim();
-      const mobile = document.getElementById('adminAgentMobile').value.trim();
-      const pin = document.getElementById('adminAgentPin').value.trim();
+      const mobile = document.getElementById('adminAgentMobile').value.replace(/\D/g, '');
+      const pin = document.getElementById('adminAgentPin').value.replace(/\D/g, '').slice(0, 4);
       if (!name || mobile.length !== 10 || pin.length !== 4) {
         alert('Please enter valid Name, 10-digit Mobile, and 4-digit PIN.');
         return;
       }
       const db = getUsersDB();
-      db[pin] = { name, mobile, loginAccessMode: 'manual', manualDutyOn: false, leads: [], callHistory: [] };
-      saveUsersDB(db);
+      const existing = db[pin] || {};
+      db[pin] = {
+        ...existing,
+        name,
+        mobile,
+        loginAccessMode: existing.loginAccessMode || 'manual',
+        manualDutyOn: existing.manualDutyOn === true,
+        leads: Array.isArray(existing.leads) ? existing.leads : [],
+        callHistory: Array.isArray(existing.callHistory) ? existing.callHistory : []
+      };
+      saveUsersDB(db).then(() => showToast('Agent Onboarded / Updated!'))
+        .catch(() => {});
       document.getElementById('adminAgentName').value = '';
       document.getElementById('adminAgentMobile').value = '';
       document.getElementById('adminAgentPin').value = '';
       renderAdminUserLists();
-      showToast('Agent Onboarded!');
     }
 
     function adminPushLeads() {
@@ -1429,7 +1396,7 @@
     }
 
     function initSnake(){
-      snakeState={cols:20,rows:25,cell:20,snake:[{x:10,y:13},{x:9,y:13},{x:8,y:13}],dir:{x:1,y:0},next:{x:1,y:0},food:{x:15,y:10},tickMs:235,particles:[]};
+      snakeState={cols:20,rows:25,cell:20,snake:[{x:10,y:13},{x:9,y:13},{x:8,y:13}],dir:{x:1,y:0},next:{x:1,y:0},food:{x:15,y:10},tickMs:235};
       placeSnakeFood(); gameRunning=true; drawSnake(); scheduleSnake();
     }
     function scheduleSnake(){ if(!gameRunning)return; clearTimeout(gameTimer); gameTimer=setTimeout(()=>{stepSnake();scheduleSnake();},snakeState.tickMs); }
@@ -1449,7 +1416,7 @@
     }
 
     function initRacer(type){
-      racerState={type,lane:1,targetLane:1,playerX:200,playerY:420,speed:0.75,targetSpeed:0.75,obstacles:[],roadOffset:0,lastSpawn:0,lastTs:0,anim:0,shake:0,particles:[],braking:false};
+      racerState={type,lane:1,targetLane:1,playerX:200,playerY:420,speed:0.75,targetSpeed:0.75,obstacles:[],roadOffset:0,lastSpawn:0,lastTs:0,anim:0,braking:false};
       gameRunning=true;gameScore=0;updateGameHud();racerLoop(0);
     }
     function spawnObstacle(){
@@ -1487,10 +1454,13 @@
     function gameControl(action){
       if(!gameRunning)return;
       if(currentGame==='snake'){const d=snakeState.next,map={left:{x:-1,y:0},right:{x:1,y:0},up:{x:0,y:-1},down:{x:0,y:1}},nd=map[action];if(nd&&!(nd.x===-d.x&&nd.y===-d.y))snakeState.next=nd;}
-      else {if(action==='left')racerState.targetLane=Math.max(0,racerState.targetLane-1);if(action==='right')racerState.targetLane=Math.min(2,racerState.targetLane+1);}
+      else {
+        if(action==='left')racerState.targetLane=Math.max(0,racerState.targetLane-1);
+        if(action==='right')racerState.targetLane=Math.min(2,racerState.targetLane+1);
+        if(action==='brake')racerState.braking=true;
+      }
     }
 
-    let stayOnCategoryList = false;
     function openCategoryModal(category) {
       document.getElementById('categoryListOverlay').style.display = 'flex';
     }
