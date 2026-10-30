@@ -6,7 +6,7 @@
   <title>Auto Dialer & Lead Manager with Admin Control</title>
   
   <!-- Web App Manifest for PWA installation -->
-  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gRGlhbGVyICYgTGVhZCBNYW5hZ2VyIiwKICAic2hvcnRfbmFtZSI6ICJEQ3lhbGVyIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZjE3MmEiLAogICJ0aGVtZV9jb2xvcIjogIiMwZjE3MmEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9mb250LWF3ZXNvbWUvNi40Lj./c3Zncy9zb2xpZC9oZWFkc2V0LnN2ZyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0KICBdCn0=">
+  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gRGlhbGVyICYgTGVhZCBNYW5hZ2VyIiwKICAic2hvcnRfbmFtZSI6ICJEQ3lhbGVyIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZjE3MmEiLAogICJ0aGVtZV9jb2xvcIjogIiMwZjE3MmEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9mb250LWF3ZXNvbWUvNi40Lj./c3Zncy9zb2xpZC9oZWFkc2V0LnN2ZyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH5KIGBdCn0=">
   <meta name="theme-color" content="#0f172a">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -207,7 +207,6 @@
     .client-table td { padding: 8px; border-bottom: 1px solid #1e293b; font-family: monospace; color: #cbd5e1; }
 
     .admin-container { display: grid; grid-template-columns: minmax(280px, .92fr) minmax(420px, 1.08fr); gap: 10px; margin-top: 4px; align-items: start; }
-    /* Compact Admin onboarding + shift panel: prevent the Add button from stretching to card height. */
     #tab-admin .admin-container > .admin-card { align-self: start; min-width: 0; padding: 10px; gap: 7px; }
     #tab-admin .admin-container > .admin-card:first-child > button { flex: 0 0 auto; width: 100%; min-height: 36px; height: 36px; padding: 7px 10px !important; margin-top: 2px; }
     #tab-admin .admin-container > .admin-card:first-child input { min-height: 31px; padding: 6px 8px; }
@@ -215,7 +214,6 @@
     #tab-admin .admin-container > .admin-card:nth-child(2) button { flex: 0 0 auto; min-height: 30px; }
     #tab-admin .admin-container > .admin-card:nth-child(2) small { line-height: 1.3; }
     @media (max-width: 1000px) { .admin-container { grid-template-columns: 1fr; } }
-    @media (max-width: 820px) { .admin-container { grid-template-columns: 1fr; } }
     @media (max-width: 820px) { .admin-container { grid-template-columns: 1fr; } }
     .admin-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
     .admin-card.full-width { grid-column: 1 / -1; }
@@ -268,9 +266,7 @@
     .game-note { flex:0 0 auto; text-align:center; color:#94a3b8; font-size:9px; line-height:1.2; margin-top:4px; min-height:11px; }
     @media (max-width:380px){ .game-box{padding:7px;border-radius:13px}.game-choice{min-height:78px}.game-control{height:34px}.game-note{font-size:8px} }
     #toast { position: fixed; bottom: 75px; left: 50%; transform: translateX(-50%); background: #22c55e; color: #0f172a; padding: 8px 16px; border-radius: 20px; font-weight: bold; font-size: 12px; z-index: 100000; display: none; }
-  
 
-    /* Corrected compact layout: reduce heights rather than enlarge panels */
     .top-slider { height: 82px !important; min-height: 0 !important; padding-top: 6px !important; padding-bottom: 6px !important; box-sizing: border-box; }
     .summary-box { height: 82px !important; min-height: 0 !important; padding: 5px !important; box-sizing: border-box; }
     .summary-list { height: 44px !important; min-height: 0 !important; box-sizing: border-box; }
@@ -278,37 +274,7 @@
     .inputs-row .add-box { height: 88px !important; min-height: 0 !important; padding: 6px !important; box-sizing: border-box; overflow: hidden; }
     .inputs-row .add-box textarea { height: 46px !important; min-height: 0 !important; max-height: 46px !important; box-sizing: border-box; padding: 5px !important; }
     .inputs-row .add-box .btn-row { gap: 3px; margin-top: 3px; }
-    @media (max-width: 480px) {
-      .top-slider { height: 78px !important; }
-      .summary-box { height: 80px !important; }
-      .summary-list { height: 42px !important; }
-      .inputs-row .add-box { height: 84px !important; padding: 5px !important; }
-      .inputs-row .add-box textarea { height: 42px !important; max-height: 42px !important; }
-    }
-
-
-    /* Tighten vertical and horizontal gaps between the main dashboard sections */
-    .top-slider { margin-bottom: 6px !important; }
-    .summary-section { margin-bottom: 0 !important; gap: 2px !important; }
-    .summary-grid { gap: 5px !important; padding-bottom: 2px !important; }
-    .partner-apps-bar { margin-top: 2px !important; margin-bottom: 5px !important; padding-top: 4px !important; padding-bottom: 4px !important; }
-    .inputs-row { gap: 5px !important; margin-bottom: 5px !important; }
-    .wa-queue-bar { margin-top: 0 !important; margin-bottom: 5px !important; padding: 6px 8px !important; }
-    .stats-bar { margin-top: 0 !important; margin-bottom: 5px !important; padding: 6px 8px !important; }
-    .container { gap: 5px !important; }
-    .num-card-box { margin: 0 !important; padding: 6px !important; gap: 4px !important; }
-    .action-row { gap: 4px !important; }
-    .category-number-row { gap: 3px !important; padding: 5px !important; }
-    @media (max-width: 480px) {
-      .top-slider { margin-bottom: 5px !important; }
-      .summary-grid { gap: 5px !important; }
-      .partner-apps-bar { margin-bottom: 4px !important; }
-      .inputs-row { gap: 4px !important; margin-bottom: 4px !important; }
-      .wa-queue-bar, .stats-bar { margin-bottom: 4px !important; }
-      .container { gap: 4px !important; }
-      .num-card-box { padding: 5px !important; gap: 3px !important; }
-    }
-</style>
+  </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
 
@@ -404,13 +370,13 @@
     <div class="summary-section">
       <div style="font-size: 12px; font-weight: bold; color: #38bdf8; margin-left: 2px;">📊 Categorized Lists</div>
       <div class="summary-grid">
-        <div class="summary-box int clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('interested')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('interested')}"><div class="summary-header"><span class="summary-title" style="color:#22c55e;">👍 Int (<span id="countInt">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('interested')">📋</button></div><div class="summary-list" id="listInt">Koi nahi</div></div>
-        <div class="summary-box not-int clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('not_interested')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('not_interested')}"><div class="summary-header"><span class="summary-title" style="color:#ef4444;">👎 Not (<span id="countNotInt">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('not_interested')">📋</button></div><div class="summary-list" id="listNotInt">Koi nahi</div></div>
-        <div class="summary-box time-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('time')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('time')}"><div class="summary-header"><span class="summary-title" style="color:#eab308;">⏰ Time (<span id="countTime">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('time')">📋</button></div><div class="summary-list" id="listTime">Koi nahi</div></div>
-        <div class="summary-box not-pick-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('call_not_pick')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('call_not_pick')}"><div class="summary-header"><span class="summary-title" style="color:#f97316;">📞 Not Pick (<span id="countNotPick">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('call_not_pick')">📋</button></div><div class="summary-list" id="listNotPick">Koi nahi</div></div>
-        <div class="summary-box working-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('working')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('working')}"><div class="summary-header"><span class="summary-title" style="color:#a855f7;">💼 Working (<span id="countWorking">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('working')">📋</button></div><div class="summary-list" id="listWorking">Koi nahi</div></div>
-        <div class="summary-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('coming')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('coming')}" style="border-top:3px solid #06b6d4;"><div class="summary-header"><span class="summary-title" style="color:#06b6d4;">🔔 Coming (<span id="countComing">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('coming')">📋</button></div><div class="summary-list" id="listComing">Koi nahi</div></div>
-        <div class="summary-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('bihar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('bihar')}" style="border-top:3px solid #f59e0b;"><div class="summary-header"><span class="summary-title" style="color:#f59e0b;">📍 Bihar (<span id="countBihar">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('bihar')">📋</button></div><div class="summary-list" id="listBihar">Koi nahi</div></div>
+        <div class="summary-box int clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('interested')"><div class="summary-header"><span class="summary-title" style="color:#22c55e;">👍 Int (<span id="countInt">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('interested')">📋</button></div><div class="summary-list" id="listInt">Koi nahi</div></div>
+        <div class="summary-box not-int clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('not_interested')"><div class="summary-header"><span class="summary-title" style="color:#ef4444;">👎 Not (<span id="countNotInt">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('not_interested')">📋</button></div><div class="summary-list" id="listNotInt">Koi nahi</div></div>
+        <div class="summary-box time-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('time')"><div class="summary-header"><span class="summary-title" style="color:#eab308;">⏰ Time (<span id="countTime">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('time')">📋</button></div><div class="summary-list" id="listTime">Koi nahi</div></div>
+        <div class="summary-box not-pick-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('call_not_pick')"><div class="summary-header"><span class="summary-title" style="color:#f97316;">📞 Not Pick (<span id="countNotPick">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('call_not_pick')">📋</button></div><div class="summary-list" id="listNotPick">Koi nahi</div></div>
+        <div class="summary-box working-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('working')"><div class="summary-header"><span class="summary-title" style="color:#a855f7;">💼 Working (<span id="countWorking">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('working')">📋</button></div><div class="summary-list" id="listWorking">Koi nahi</div></div>
+        <div class="summary-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('coming')" style="border-top:3px solid #06b6d4;"><div class="summary-header"><span class="summary-title" style="color:#06b6d4;">🔔 Coming (<span id="countComing">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('coming')">📋</button></div><div class="summary-list" id="listComing">Koi nahi</div></div>
+        <div class="summary-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('bihar')" style="border-top:3px solid #f59e0b;"><div class="summary-header"><span class="summary-title" style="color:#f59e0b;">📍 Bihar (<span id="countBihar">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('bihar')">📋</button></div><div class="summary-list" id="listBihar">Koi nahi</div></div>
       </div>
     </div>
 
@@ -464,7 +430,7 @@
       
       <div class="client-filter-box">
         <select id="clientFilterCategory" onchange="renderClientTable()">
-          <option value="all">🔍 All Categories (Interested / Not / Timing / Not Pick / Working / Coming / Bihar)</option>
+          <option value="all">🔍 All Categories</option>
           <option value="interested">👍 Interested Only</option>
           <option value="not_interested">👎 Not Interested Only</option>
           <option value="time">⏰ Timing / Notes Only</option>
@@ -530,7 +496,6 @@
       </div>
 
       <div class="admin-container">
-        
         <div class="admin-card">
           <div class="admin-card-title">
             <span><i class="fas fa-user-plus"></i> Onboard Agent</span>
@@ -551,8 +516,6 @@
           </div>
           <button class="btn-primary" style="background:#22c55e; color:#0f172a; font-weight:bold; padding:7px;" onclick="adminSaveUser()">+ Add / Update Agent</button>
         </div>
-
-        <!-- Shift & Break Controls panel removed. Per-agent Manual ON/OFF remains on each user card. -->
 
         <div class="admin-card">
           <div class="admin-card-title">
@@ -599,7 +562,6 @@
           </div>
           <div class="user-cards-grid" id="adminUserList"></div>
         </div>
-
       </div>
     </div>
   </div>
@@ -652,34 +614,12 @@
     <button class="nav-item" id="nav-admin" style="display:none;" onclick="switchTab('tab-admin', this)"><i class="fas fa-user-shield"></i><span>Admin</span></button>
   </nav>
 
-  <!-- Security Script to Disable Shortcuts & Inspect Element -->
-  <script>
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      return false;
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (
-        e.keyCode === 123 || 
-        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || 
-        (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 65))
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    });
-  </script>
-
   <!-- PWA Install Prompt Script -->
   <script>
     let deferredPrompt = null;
-
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      console.log('PWA installation prompt ready');
     });
 
     function triggerPWAInstall() {
@@ -688,19 +628,17 @@
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
             showToast('App Installed Successfully! 🎉');
-          } else {
-            showToast('App Install Canceled');
           }
           deferredPrompt = null;
         });
       } else {
-        alert('Aapke browser me App Install ka option directly open nahi ho paraha hai. Browser ke 3-dots (⋮) Menu me jaakar "Add to Home Screen" par click karein.');
+        alert('Browser ke 3-dots (⋮) Menu me jaakar "Add to Home Screen" par click karein.');
       }
     }
   </script>
 
+  <!-- MAIN APP SCRIPT -->
   <script>
-    // FIREBASE CONFIGURATION
     const firebaseConfig = {
       apiKey: "AIzaSyDbg-yDrl1_FYXEDjLN9Ay0kWJ556Xvdeg",
       authDomain: "smart-call-9950a.firebaseapp.com",
@@ -722,8 +660,6 @@
     const scheduledTimeAlarms = new Map();
     let alarmAudioContext = null;
     let activeAlarmStopTimer = null;
-    // Prevent an older realtime snapshot from replacing the cache during onboarding.
-    let onboardingWriteInProgress = false;
 
     function getUsersDB() {
       const stored = localStorage.getItem('systemUsersDB');
@@ -732,22 +668,15 @@
         const parsed = JSON.parse(stored);
         return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
       } catch (e) {
-        console.warn('Invalid user database found. Starting with empty database.', e);
         return {};
       }
     }
 
-    function saveUsersDB(dbData) {
-      // Keep the local cache responsive, but always observe Firebase write failures.
+    function saveUsersDB(dbData) { 
       localStorage.setItem('systemUsersDB', JSON.stringify(dbData));
       if (typeof firebase !== 'undefined' && firebase.apps.length) {
-        return firebase.database().ref('systemUsersDB').set(dbData).catch(error => {
-          console.error('Firebase systemUsersDB save failed:', error);
-          showToast('Firebase sync failed — check Database Rules / connection');
-          return false;
-        });
+        firebase.database().ref('systemUsersDB').set(dbData);
       }
-      return Promise.resolve(true);
     }
 
     function getBlacklistedPins() {
@@ -757,15 +686,7 @@
         const parsed = JSON.parse(stored);
         return Array.isArray(parsed) ? parsed : [];
       } catch (e) {
-        console.warn('Invalid blacklist found. Using empty blacklist.', e);
         return [];
-      }
-    }
-
-    function saveBlacklistedPins(arr) { 
-      localStorage.setItem('blacklistedPins', JSON.stringify(arr));
-      if (typeof firebase !== 'undefined' && firebase.apps.length) {
-        firebase.database().ref('blacklistedPins').set(arr);
       }
     }
 
@@ -793,10 +714,7 @@
       if (typeof firebase !== 'undefined' && firebase.apps.length) {
         firebase.database().ref('systemUsersDB').on('value', snapshot => {
           const cloudDb = snapshot.val();
-          // adminSaveUser writes one user at a time. Ignore any snapshot that arrives
-          // while that write is in flight; the successful save updates the cache itself.
-          if (onboardingWriteInProgress) return;
-          if (cloudDb && typeof cloudDb === 'object' && !Array.isArray(cloudDb)) {
+          if (cloudDb) {
             localStorage.setItem('systemUsersDB', JSON.stringify(cloudDb));
             if (localStorage.getItem('userRole') === 'USER') {
               const pin = getActiveUserPin();
@@ -834,10 +752,6 @@
       }
       renderAdminUserLists();
       renderAll();
-      restoreNumberAlarms();
-      const shiftSelect = document.getElementById('adminShiftUserSelect');
-      if (shiftSelect) shiftSelect.addEventListener('change', loadAdminShiftSettings);
-      loadAdminShiftSettings();
     });
 
     function saveNumbersData() {
@@ -865,15 +779,6 @@
       const regex = /(\+?\d{10,12})/g;
       const matches = text.match(regex) || [];
       return matches.map(n => cleanPhoneNumber(n)).filter(n => n.length >= 10);
-    }
-
-    function formatTime12Hr(timeStr) {
-      if (!timeStr) return '';
-      let [h, m] = timeStr.split(':');
-      let hh = parseInt(h, 10);
-      let ampm = hh >= 12 ? 'PM' : 'AM';
-      hh = hh % 12 || 12;
-      return `${hh.toString().padStart(2, '0')}:${m} ${ampm}`;
     }
 
     function showDutyOffModal(message) { const p = document.querySelector('#dutyOffModalOverlay .dutyoff-card p'); if (p && message) p.textContent = message; document.getElementById('dutyOffModalOverlay').style.display = 'flex'; }
@@ -947,21 +852,11 @@
     function setCategory(index, category) {
       if (numbersData[index] && numbersData[index].called) {
         if (category === 'time') {
-          unlockAlarmAudio();
           const note = prompt('Timing ya notes likhein (e.g. Call at 4 PM):');
           if (note !== null) {
             numbersData[index].note = note;
             numbersData[index].category = category;
-            const alarmAt = parseUserAlarmTime(note);
-            if (alarmAt) {
-              numbersData[index].alarmAt = alarmAt;
-              scheduleNumberAlarm(index, alarmAt);
-              showToast('Time saved! Alarm set for ' + new Date(alarmAt).toLocaleString());
-            } else {
-              delete numbersData[index].alarmAt;
-              clearNumberAlarm(index);
-              showToast('Timing/notes saved. Time samajh nahi aaya; try 1 baje, 2:30 baje, 4 PM, or 14:30.');
-            }
+            showToast('Timing/notes saved.');
           } else { return; }
         } else {
           numbersData[index].category = category;
@@ -970,104 +865,6 @@
         saveNumbersData();
         renderAll();
       } else { alert('Pehle is number par Call click karein!'); }
-    }
-
-    function parseUserAlarmTime(rawText) {
-      const text = String(rawText || '').trim().toLowerCase();
-      if (!text) return null;
-      const cleaned = text.replace(/बजे/g, ' baje').replace(/[.]/g, '').replace(/\s+/g, ' ');
-      const m = cleaned.match(/(?:^|\D)(\d{1,2})(?::(\d{1,2}))?\s*(am|pm|a m|p m)?\s*(?:baje|बजे)?(?:\s|$)/i);
-      if (!m) return null;
-      let hour = Number(m[1]);
-      const minute = Number(m[2] || 0);
-      const meridiem = (m[3] || '').replace(/\s/g, '').toLowerCase();
-      if (minute > 59 || hour > 24 || hour < 0 || (hour === 24 && minute !== 0)) return null;
-      if (meridiem) {
-        if (hour < 1 || hour > 12) return null;
-        hour = hour % 12 + (meridiem === 'pm' ? 12 : 0);
-      } else if (hour === 24) {
-        hour = 0;
-      }
-      const now = new Date();
-      const target = new Date(now);
-      target.setHours(hour, minute, 0, 0);
-      if (target.getTime() <= now.getTime() + 1000) target.setDate(target.getDate() + 1);
-      return target.getTime();
-    }
-
-    function unlockAlarmAudio() {
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (AudioCtx && !alarmAudioContext) alarmAudioContext = new AudioCtx();
-        if (alarmAudioContext && alarmAudioContext.state === 'suspended') alarmAudioContext.resume();
-      } catch (err) { console.warn('Audio unlock failed:', err); }
-    }
-
-    function clearNumberAlarm(index) {
-      const timer = scheduledTimeAlarms.get(index);
-      if (timer) clearTimeout(timer);
-      scheduledTimeAlarms.delete(index);
-    }
-
-    function scheduleNumberAlarm(index, timestamp) {
-      clearNumberAlarm(index);
-      const delay = Number(timestamp) - Date.now();
-      if (!Number.isFinite(delay) || delay <= 0) return;
-      const timer = setTimeout(() => {
-        scheduledTimeAlarms.delete(index);
-        const item = numbersData[index];
-        if (!item) return;
-        triggerNumberAlarm(item.number, item.note || 'Scheduled call');
-        delete item.alarmAt;
-        saveNumbersData();
-        renderAll();
-      }, Math.min(delay, 2147480000));
-      scheduledTimeAlarms.set(index, timer);
-    }
-
-    function restoreNumberAlarms() {
-      numbersData.forEach((item, index) => {
-        if (item && item.alarmAt && Number(item.alarmAt) > Date.now()) scheduleNumberAlarm(index, Number(item.alarmAt));
-      });
-    }
-
-    function triggerNumberAlarm(phone, note) {
-      const banner = document.getElementById('timeAlarmBanner');
-      if (banner) {
-        document.getElementById('timeAlarmNumber').textContent = String(phone || 'Unknown number');
-        document.getElementById('timeAlarmNote').textContent = String(note || 'Call reminder');
-        banner.style.display = 'block';
-      }
-      try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (AudioCtx) {
-          if (!alarmAudioContext) alarmAudioContext = new AudioCtx();
-          if (alarmAudioContext.state === 'suspended') alarmAudioContext.resume();
-          const start = alarmAudioContext.currentTime;
-          for (let t = 0; t < 5; t += 0.34) {
-            [0, 0.12].forEach((offset, j) => {
-              const osc = alarmAudioContext.createOscillator();
-              const gain = alarmAudioContext.createGain();
-              osc.type = 'square';
-              osc.frequency.value = j === 0 ? 980 : 1240;
-              gain.gain.setValueAtTime(0.0001, start + t + offset);
-              gain.gain.exponentialRampToValueAtTime(0.28, start + t + offset + 0.015);
-              gain.gain.setValueAtTime(0.28, start + t + offset + 0.08);
-              gain.gain.exponentialRampToValueAtTime(0.0001, start + t + offset + 0.13);
-              osc.connect(gain); gain.connect(alarmAudioContext.destination);
-              osc.start(start + t + offset); osc.stop(start + t + offset + 0.14);
-            });
-          }
-        }
-      } catch (err) { console.warn('Alarm sound could not start:', err); }
-      if (activeAlarmStopTimer) clearTimeout(activeAlarmStopTimer);
-      activeAlarmStopTimer = setTimeout(() => { if (banner) banner.style.display = 'none'; }, 7000);
-    }
-
-    function dismissTimeAlarm() {
-      const banner = document.getElementById('timeAlarmBanner');
-      if (banner) banner.style.display = 'none';
-      if (activeAlarmStopTimer) clearTimeout(activeAlarmStopTimer);
     }
 
     function addBulkNumbers() {
@@ -1313,37 +1110,13 @@
       }
 
       const user = db[pin];
-      const adminManualMode = user.loginAccessMode === 'manual';
-      const adminAllowedAnytime = user.loginAccessMode === 'anytime';
-      if (adminManualMode && user.manualDutyOn !== true) {
+      if (user.loginAccessMode === 'manual' && user.manualDutyOn !== true) {
         closePinModal();
         showDutyOffModal('Admin ne aapki duty OFF rakhi hai. Login ke liye Admin se ON karwayein.');
         return;
       }
-      if (!adminManualMode && !adminAllowedAnytime && (user.dutyOffDate === localDateKey() || user.break === 'Off Duty')) {
-        closePinModal();
-        showDutyOffModal();
-        return;
-      }
-      if (!adminAllowedAnytime && !adminManualMode) {
-        const shiftStart = parseClockToday(user.shiftStartRaw || '09:00');
-        const now = new Date();
-        const loginDeadline = shiftStart ? new Date(shiftStart.getTime() + 10 * 60000) : null;
-        const alreadyLoggedToday = user.lastLoginDate === localDateKey();
-        const shiftUpdatedToday = user.lastShiftUpdateAt && localDateKey(new Date(user.lastShiftUpdateAt)) === localDateKey() && new Date(user.lastShiftUpdateAt) > new Date((shiftStart || now).getTime() + 10*60000);
-        if (shiftStart && now < shiftStart) {
-          closePinModal();
-          showDutyOffModal('Abhi aapki shift start nahi hui hai. Shift start hone par alarm aayega.');
-          return;
-        }
-        if (loginDeadline && now > loginDeadline && !alreadyLoggedToday && !shiftUpdatedToday) {
-          user.break = 'Off Duty'; user.dutyOffDate = localDateKey(); saveUsersDB(db);
-          closePinModal(); showDutyOffModal('Login ka 10 minute ka samay nikal gaya. Duty Off hai. Admin se contact karein; Admin ko new shift update karni hogi.');
-          return;
-        }
-      }
-      user.lastLoginDate = localDateKey();
-      user.lastLoginTime = new Date().toISOString();
+
+      user.lastLoginDate = new Date().toISOString();
       saveUsersDB(db);
 
       localStorage.setItem('isLoggedIn', 'true');
@@ -1357,146 +1130,6 @@
       renderAll();
       switchTab('tab-home', document.getElementById('nav-home'));
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      try {
-        const savedIn = localStorage.getItem('isLoggedIn') === 'true';
-        const savedRole = localStorage.getItem('userRole');
-        if (savedIn && savedRole === 'ADMIN') {
-          document.getElementById('splashScreen').style.display = 'none';
-          updateLoginUi();
-          renderAdminUserLists();
-        } else if (savedIn && savedRole === 'USER') {
-          const savedPin = localStorage.getItem('activeUserPin');
-          const users = getUsersDB();
-          const savedUser = savedPin ? users[savedPin] : null;
-          if (savedUser && (savedUser.loginAccessMode === 'anytime' || (savedUser.loginAccessMode === 'manual' ? savedUser.manualDutyOn === true : (savedUser.break !== 'Off Duty' && savedUser.dutyOffDate !== localDateKey()))) && !getBlacklistedPins().includes(savedPin)) {
-            numbersData = Array.isArray(savedUser.leads) ? savedUser.leads : [];
-            callHistory = Array.isArray(savedUser.callHistory) ? savedUser.callHistory : [];
-            document.getElementById('splashScreen').style.display = 'none';
-            updateLoginUi();
-            renderAll();
-          } else {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userRole');
-            localStorage.removeItem('activeUserPin');
-          }
-        }
-      } catch (e) { console.warn('Session restore skipped:', e); }
-
-      const pinInput = document.getElementById('pinInput');
-      if (pinInput) {
-        pinInput.addEventListener('input', () => {
-          pinInput.value = pinInput.value.replace(/\D/g, '').slice(0, 4);
-        });
-        pinInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            verifyPin();
-          }
-        });
-      }
-    });
-
-    let scheduleAlarmContext = null;
-    let scheduleAlarmOscillators = [];
-    function localDateKey(d = new Date()) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
-    function parseClockToday(raw, base = new Date()) {
-      if (!raw || !/^\d{2}:\d{2}$/.test(raw)) return null;
-      const [h,m] = raw.split(':').map(Number); const d = new Date(base); d.setHours(h,m,0,0); return d;
-    }
-    function playScheduleAlarm(title, message, context) {
-      scheduleAlarmContext = context || null;
-      const overlay = document.getElementById('scheduleAlarmOverlay');
-      document.getElementById('scheduleAlarmTitle').textContent = title;
-      document.getElementById('scheduleAlarmMessage').textContent = message;
-      overlay.style.display = 'flex';
-      stopScheduleAlarmSound();
-      try {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (AC) {
-          alarmAudioContext = alarmAudioContext || new AC();
-          if (alarmAudioContext.state === 'suspended') alarmAudioContext.resume();
-          const startAt = alarmAudioContext.currentTime;
-          for (let i=0;i<10;i++) {
-            const osc = alarmAudioContext.createOscillator(); const gain = alarmAudioContext.createGain();
-            osc.type = 'square'; osc.frequency.value = i%2 ? 1250 : 880;
-            gain.gain.setValueAtTime(0.0001, startAt+i*0.8);
-            gain.gain.exponentialRampToValueAtTime(0.22, startAt+i*0.8+0.03);
-            gain.gain.setValueAtTime(0.22, startAt+i*0.8+0.22);
-            gain.gain.exponentialRampToValueAtTime(0.0001, startAt+i*0.8+0.32);
-            osc.connect(gain); gain.connect(alarmAudioContext.destination);
-            scheduleAlarmOscillators.push(osc);
-            osc.start(startAt+i*0.8); osc.stop(startAt+i*0.8+0.35);
-          }
-        }
-      } catch(e) { console.warn('Alarm sound unavailable until browser interaction:',e); }
-      activeAlarmStopTimer = setTimeout(dismissScheduleAlarm, 10000);
-    }
-    function stopScheduleAlarmSound() {
-      if (activeAlarmStopTimer) { clearTimeout(activeAlarmStopTimer); activeAlarmStopTimer = null; }
-      scheduleAlarmOscillators.forEach(o=>{ try{o.stop();}catch(e){} }); scheduleAlarmOscillators=[];
-    }
-    function dismissScheduleAlarm() {
-      stopScheduleAlarmSound();
-      const overlay = document.getElementById('scheduleAlarmOverlay'); if (overlay) overlay.style.display='none';
-    }
-    function userSessionFor(pin) { return localStorage.getItem('isLoggedIn')==='true' && localStorage.getItem('userRole')==='USER' && getActiveUserPin()===pin; }
-    function forceUserBreakLogout(pin, user, label) {
-      user.breakSessionDate = localDateKey(); user.breakSessionType = label; user.breakSessionEndRaw = label==='Lunch Break' ? addMinutesClock(user.breakStartRaw || '13:00', parseInt(user.breakDuration,10)||30) : label==='Tea Break 1' ? addMinutesClock(user.teaBreak1Raw || '11:00', parseInt(user.teaDuration1,10)||15) : addMinutesClock(user.teaBreak2Raw || '16:00', parseInt(user.teaDuration2,10)||15);
-      saveUsersDB(getUsersDB());
-      if (userSessionFor(pin)) {
-        localStorage.setItem('pendingBreakAutoLoginPin', pin);
-        localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole');
-        document.getElementById('splashScreen').style.display='flex'; updateLoginUi();
-      }
-      playScheduleAlarm(label, `${label} shuru ho gaya. Aapko logout kiya gaya hai. Break ke baad app khula ho to auto-login hoga.`, {type:'break-start',pin});
-    }
-    function addMinutesClock(raw, minutes) { const d=parseClockToday(raw); if(!d)return raw; d.setMinutes(d.getMinutes()+minutes); return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; }
-    function scheduleEventOnce(user, key, dateKey) { const k=`${key}FiredDate`; if(user[k]===dateKey)return false; user[k]=dateKey; return true; }
-    function runShiftBreakScheduler() {
-      const now = new Date(), today = localDateKey(), db = getUsersDB(); let changed=false;
-      Object.keys(db).forEach(pin => {
-        const u=db[pin]||{}; if (u.loginAccessMode === 'anytime' || u.loginAccessMode === 'manual') return; const start=parseClockToday(u.shiftStartRaw||'09:00'); const end=parseClockToday(u.shiftEndRaw||'18:00');
-        if (!start || !end) return;
-        const startAlarmAt=start.getTime();
-        if (now.getTime()>=startAlarmAt && now.getTime()<startAlarmAt+10000 && scheduleEventOnce(u,'shiftAlarm',today)) {
-          changed=true; playScheduleAlarm('Shift Start', `${u.name || 'User'}: aapki shift shuru ho gayi hai. 10 minute ke andar login karein.`, {type:'shift-start',pin});
-        }
-        const updatedAt = u.lastShiftUpdateAt ? new Date(u.lastShiftUpdateAt) : null;
-        const shiftUpdatedAfterGrace = updatedAt && localDateKey(updatedAt)===today && updatedAt.getTime()>startAlarmAt+10*60000;
-        if (now.getTime()>=startAlarmAt+10*60000 && u.lastLoginDate!==today && u.dutyOffDate!==today && !shiftUpdatedAfterGrace) {
-          u.dutyOffDate=today; u.break='Off Duty'; changed=true;
-          if (!userSessionFor(pin)) showDutyOffModal('Aapne shift start hone ke 10 minute ke andar login nahi kiya. Duty Off hai. Contact Admin. Admin ko new shift update karni hogi.');
-        }
-        const breaks=[
-          {key:'lunch',label:'Lunch Break',start:u.breakStartRaw||'13:00',duration:parseInt(u.breakDuration,10)||30},
-          {key:'tea1',label:'Tea Break 1',start:u.teaBreak1Raw||'11:00',duration:parseInt(u.teaDuration1,10)||15},
-          {key:'tea2',label:'Tea Break 2',start:u.teaBreak2Raw||'16:00',duration:parseInt(u.teaDuration2,10)||15}
-        ];
-        breaks.forEach(b=>{
-          const bs=parseClockToday(b.start); if(!bs)return; const be=new Date(bs.getTime()+b.duration*60000);
-          if(now>=bs && now<new Date(bs.getTime()+10000) && scheduleEventOnce(u,b.key+'Start',today)) {
-            changed=true;
-            if(userSessionFor(pin)) forceUserBreakLogout(pin,u,b.label);
-            else playScheduleAlarm(b.label, `${u.name || 'User'} ka ${b.label} time shuru ho gaya. User login nahi hai; break end par manual login ki zaroorat ho sakti hai.`, {type:'break-start',pin});
-          }
-          if(now>=be && now<new Date(be.getTime()+10000) && scheduleEventOnce(u,b.key+'End',today)) {
-            changed=true;
-            playScheduleAlarm(`${b.label} Over`, `${b.label} khatam ho gaya.`, {type:'break-end',pin});
-            const pending=localStorage.getItem('pendingBreakAutoLoginPin');
-            if(pending===pin && u.lastLoginDate===today && u.dutyOffDate!==today) {
-              localStorage.removeItem('pendingBreakAutoLoginPin'); localStorage.setItem('isLoggedIn','true'); localStorage.setItem('userRole','USER'); localStorage.setItem('activeUserPin',pin);
-              numbersData=Array.isArray(u.leads)?u.leads:[]; callHistory=Array.isArray(u.callHistory)?u.callHistory:[];
-              document.getElementById('splashScreen').style.display='none'; updateLoginUi(); renderAll(); switchTab('tab-home',document.getElementById('nav-home'));
-            }
-          }
-        });
-      });
-      if(changed) saveUsersDB(db);
-    }
-
-    setInterval(runShiftBreakScheduler, 1000);
 
     function handleLogout() {
       localStorage.removeItem('isLoggedIn');
@@ -1595,9 +1228,7 @@
             const dialNumber = String(r.number || '').replace(/[^0-9+*#,;]/g, '');
             call.href = dialNumber ? `tel:${dialNumber}` : '#';
             call.textContent = '📞 Call';
-            call.title = 'Call this number';
             call.style.cssText = 'display:inline-block;flex-shrink:0;padding:4px 8px;border-radius:5px;background:#16a34a;color:#fff;text-decoration:none;font-size:10px;font-weight:bold;';
-            if (!dialNumber) { call.style.opacity = '0.5'; call.style.pointerEvents = 'none'; }
             row.append(number, call);
             list.appendChild(row);
           });
@@ -1614,29 +1245,17 @@
       const chosen = category ? rows.filter(row => row.category === category) : rows;
       if (!chosen.length) { showToast('Copy karne ke liye feedback data nahi hai!'); return; }
       const text = chosen.map(r => String(r.number || '').trim()).filter(Boolean).join('\n');
-      const fallbackCopy = () => {
-        const ta = document.createElement('textarea');
-        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); showToast('Feedback Data Copied! 📋'); }
-        catch (e) { showToast('Copy nahi ho paya!'); }
-        ta.remove();
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => showToast('Feedback Data Copied! 📋')).catch(fallbackCopy);
-      } else fallbackCopy();
+      navigator.clipboard.writeText(text).then(() => showToast('Feedback Data Copied! 📋'));
     }
 
     function renderAdminUserLists() {
       renderAdminAllFeedback();
       const db = getUsersDB();
       const container = document.getElementById('adminUserList');
-      const shiftSelect = document.getElementById('adminShiftUserSelect');
       const dataSelect = document.getElementById('adminDataUserSelect');
       if (!container) return;
 
       container.innerHTML = '';
-      if(shiftSelect) shiftSelect.innerHTML = '';
       if(dataSelect) dataSelect.innerHTML = '';
 
       const keys = Object.keys(db);
@@ -1657,7 +1276,7 @@
               <span style="color:#22c55e; font-size:10px; font-weight:bold;">${s.called} Calls</span>
             </div>
             <div style="color:#cbd5e1; font-size:10px; margin-top:2px;">📱 ${u.mobile || 'No Mobile'}</div>
-            <div style="color:#38bdf8; font-size:10px; margin-top:2px;">Status: <b style="${(u.loginAccessMode==='manual' ? u.manualDutyOn!==true : u.break==='Off Duty')?'color:#ef4444':'color:#22c55e'}">${u.loginAccessMode==='manual' ? (u.manualDutyOn===true?'Manual ON':'Manual OFF') : (u.break || 'Working')}</b></div>
+            <div style="color:#38bdf8; font-size:10px; margin-top:2px;">Status: <b style="${u.manualDutyOn!==true?'color:#ef4444':'color:#22c55e'}">${u.manualDutyOn===true?'Manual ON':'Manual OFF'}</b></div>
           </div>
           <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:4px; font-size:9px; text-align:center; margin-top:4px;">
             <div style="background:#1e293b; padding:3px; border-radius:4px;"><b>${s.total}</b><br><span style="color:#94a3b8;">Data</span></div>
@@ -1666,145 +1285,44 @@
             <div style="background:#1e293b; padding:3px; border-radius:4px;"><b>${s.interested}</b><br><span style="color:#22c55e;">Int.</span></div>
           </div>
           <div style="display:flex; gap:4px; margin-top:6px; flex-wrap:wrap;">
-            <button style="flex:1; padding:5px; font-size:10px; border:0; border-radius:5px; cursor:pointer; font-weight:bold; background:${u.loginAccessMode==='manual' && u.manualDutyOn===true?'#ef4444':'#22c55e'}; color:${u.loginAccessMode==='manual' && u.manualDutyOn===true?'#fff':'#052e16'};" onclick="adminToggleManualDuty('${pin}')">${u.loginAccessMode==='manual' && u.manualDutyOn===true?'⏻ Manual OFF':'▶ Manual ON'}</button>
+            <button style="flex:1; padding:5px; font-size:10px; border:0; border-radius:5px; cursor:pointer; font-weight:bold; background:${u.manualDutyOn===true?'#ef4444':'#22c55e'}; color:${u.manualDutyOn===true?'#fff':'#052e16'};" onclick="adminToggleManualDuty('${pin}')">${u.manualDutyOn===true?'⏻ Manual OFF':'▶ Manual ON'}</button>
             <button class="btn-excel" style="flex:1; padding:5px; font-size:10px;" onclick="prepareAdminData('${pin}')">📤 Send Data</button>
             <button class="btn-primary" style="flex:1; padding:5px; font-size:10px;" onclick="viewAdminUser('${pin}')">👁 Activity</button>
-            <button class="copy-btn" style="background:#22c55e; color:#0f172a; font-weight:bold; padding:5px; font-size:10px;" onclick="adminCopyUserCallActivity('${pin}')">📋 Copy Calls</button>
             <button style="background:#ef4444; color:#fff; border:none; padding:5px 8px; border-radius:5px; font-size:10px; cursor:pointer;" onclick="deleteAdminUser('${pin}')">🗑</button>
           </div>
         `;
         container.appendChild(card);
-        if(shiftSelect) shiftSelect.innerHTML += `<option value="${pin}">${u.name}</option>`;
         if(dataSelect) dataSelect.innerHTML += `<option value="${pin}">${u.name}</option>`;
       });
-
       renderAdminAnalytics();
     }
 
-    function adminCopyUserCallActivity(pin) {
+    function adminToggleManualDuty(pin) {
       const db = getUsersDB();
-      const user = db[pin];
-      if (!user) return;
-      const history = user.callHistory || [];
-      const leads = user.leads || [];
-
-      if (history.length === 0 && leads.length === 0) {
-        showToast('Koi Call Activity nahi hai!');
-        return;
-      }
-
-      let text = `=== CALL ACTIVITY REPORT (${user.name} - PIN: ${pin}) ===\n\n`;
-      text += `--- RECENT CALL LOGS ---\n`;
-      history.forEach((h, i) => {
-        text += `${i + 1}. Number: ${h.number} | Time: ${h.time}\n`;
-      });
-
-      text += `\n--- CATEGORIZED CLIENTS ---\n`;
-      leads.filter(l => l.category).forEach((l, i) => {
-        text += `${i + 1}. Number: ${l.number} | Category: ${l.category} | Notes: ${l.note || '-'}\n`;
-      });
-
-      navigator.clipboard.writeText(text);
-      showToast(`${user.name} Ki Activity Copied! 📋`);
+      const u = db[pin];
+      if (!u) return;
+      u.manualDutyOn = !u.manualDutyOn;
+      saveUsersDB(db);
+      renderAdminUserLists();
+      showToast(u.manualDutyOn ? `${u.name}: Manual Duty ON` : `${u.name}: Manual Duty OFF`);
     }
 
     function adminClearAgentData() {
       const pin = document.getElementById('adminDataUserSelect').value;
       const db = getUsersDB();
       if (!pin || !db[pin]) { showToast('Agent Select Karein!'); return; }
-      
-      if (confirm(`${db[pin].name} ka saara bhej gaya Data Delete karein?`)) {
+      if (confirm(`${db[pin].name} ka saara data delete karein?`)) {
         db[pin].leads = [];
         db[pin].callHistory = [];
         saveUsersDB(db);
         renderAdminUserLists();
-        showToast('Agent Data Completely Deleted! 🗑');
+        showToast('Agent Data Deleted! 🗑');
       }
-    }
-
-    function copyAdminActivity(pin, category) {
-      const db = getUsersDB();
-      const user = db[pin];
-      if (!user) { showToast('Agent data nahi mila!'); return; }
-
-      let text = '';
-      if (category === 'logs') {
-        text = (user.callHistory || []).map(x => `${x.number || ''}${x.time ? ' — ' + x.time : ''}`).filter(Boolean).join('\n');
-      } else if (category === 'all') {
-        text = (user.leads || []).map(x => `${x.number || ''}${x.category ? ' | ' + x.category.replace(/_/g, ' ') : ' | Pending'}${x.note ? ' | ' + x.note : ''}`).join('\n');
-      } else {
-        text = (user.leads || []).filter(x => category === 'pending' ? !x.category : x.category === category)
-          .map(x => `${x.number || ''}${x.note ? ' (' + x.note + ')' : ''}`).filter(Boolean).join('\n');
-      }
-
-      if (!text.trim()) { showToast('Copy karne ke liye data nahi hai!'); return; }
-      const fallbackCopy = () => {
-        const ta = document.createElement('textarea');
-        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        const ok = document.execCommand('copy'); ta.remove();
-        showToast(ok ? 'Copied! 📋' : 'Copy nahi ho paya');
-      };
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => showToast('Copied! 📋')).catch(fallbackCopy);
-      } else fallbackCopy();
-    }
-
-    function viewAdminUser(pin) {
-      const db = getUsersDB();
-      const user = db[pin];
-      if (!user) return;
-      const s = getUserStats(user);
-      const logs = (user.callHistory || []).slice(0, 20).map(x => `📞 ${x.number} — ${x.time}`).join('<br>') || 'No call logs recorded yet.';
-      const old = document.getElementById('adminUserViewModal');
-      if (old) old.remove();
-
-      const statTile = (count, label, color, category) => `
-        <div style="background:#0f172a;padding:7px 5px;border-radius:6px;color:${color};display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;">
-          <b>${count}</b><span>${label}</span>
-          <button onclick="copyAdminActivity('${pin}','${category}')" style="border:0;border-radius:4px;background:#334155;color:#fff;padding:3px 7px;font-size:10px;cursor:pointer;"><i class="fas fa-copy"></i> Copy</button>
-        </div>`;
-
-      const modal = document.createElement('div');
-      modal.id = 'adminUserViewModal';
-      modal.style.cssText = 'position:fixed; inset:0; background:#0f172a; z-index:100001; display:flex; align-items:center; justify-content:center; padding:15px;';
-      modal.innerHTML = `
-        <div style="width:100%;max-width:420px;max-height:85vh;overflow:auto;background:#1e293b;border:1px solid #38bdf8;border-radius:12px;padding:15px;color:#fff;">
-          <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #334155;padding-bottom:8px;margin-bottom:10px;">
-            <strong style="color:#38bdf8;font-size:14px;">${user.name} — Full Activity View</strong>
-            <button onclick="document.getElementById('adminUserViewModal').remove()" style="background:none;border:0;color:#ef4444;font-size:18px;cursor:pointer;">✖</button>
-          </div>
-          <div style="font-size:11px;color:#94a3b8;margin-bottom:10px;">
-            📱 Mobile: ${user.mobile || 'N/A'} | PIN: ${pin}<br>
-            ⏰ Shift: ${user.shift || '09:00 AM - 06:00 PM'} | Status: ${user.break || 'Working'}
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:11px;text-align:center;">
-            ${statTile(s.total,'Total Data','#f8fafc','all')}
-            ${statTile(s.called,'Calls Done','#22c55e','called')}
-            ${statTile(s.pending,'Pending','#38bdf8','pending')}
-            ${statTile(s.interested,'Interested','#22c55e','interested')}
-            ${statTile(s.notInterested,'Not Int','#ef4444','not_interested')}
-            ${statTile(s.time,'Timing','#eab308','time')}
-            ${statTile(s.notPick,'Not Pick','#f97316','call_not_pick')}
-            ${statTile(s.working,'Working','#a855f7','working')}
-            ${statTile(s.coming,'Coming','#06b6d4','coming')}
-            ${statTile(s.bihar,'Bihar','#f59e0b','bihar')}
-            ${statTile(s.callLogs,'Logs','#38bdf8','logs')}
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;font-size:11px;color:#38bdf8;font-weight:bold;">
-            <span>Recent Call History Logs:</span>
-            <button onclick="copyAdminActivity('${pin}','logs')" style="border:0;border-radius:5px;background:#22c55e;color:#0f172a;padding:5px 8px;font-weight:bold;cursor:pointer;"><i class="fas fa-copy"></i> Copy Logs</button>
-          </div>
-          <div style="background:#0f172a;padding:8px;border-radius:6px;margin-top:5px;font-size:10px;color:#cbd5e1;line-height:1.6;max-height:120px;overflow-y:auto;">${logs}</div>
-        </div>`;
-      document.body.appendChild(modal);
     }
 
     function prepareAdminData(pin) {
       const select = document.getElementById('adminDataUserSelect');
       if (select) { select.value = pin; select.scrollIntoView({behavior:'smooth', block:'center'}); }
-      const input = document.getElementById('adminLeadsInput');
-      if (input) input.focus();
       showToast('Agent selected. Paste numbers and click Push.');
     }
 
@@ -1820,199 +1338,22 @@
       }).join('<br>');
     }
 
-    async function adminSaveUser() {
-      const nameEl = document.getElementById('adminAgentName');
-      const mobileEl = document.getElementById('adminAgentMobile');
-      const pinEl = document.getElementById('adminAgentPin');
-      const name = nameEl.value.trim();
-      const mobile = mobileEl.value.trim();
-      const pin = pinEl.value.trim();
-      if (!name || !/^\\d{10}$/.test(mobile) || !/^\\d{4}$/.test(pin)) {
+    function adminSaveUser() {
+      const name = document.getElementById('adminAgentName').value.trim();
+      const mobile = document.getElementById('adminAgentMobile').value.trim();
+      const pin = document.getElementById('adminAgentPin').value.trim();
+      if (!name || mobile.length !== 10 || pin.length !== 4) {
         alert('Please enter valid Name, 10-digit Mobile, and 4-digit PIN.');
         return;
       }
-
-      const addButton = document.querySelector('#tab-admin .admin-container > .admin-card:first-child > button');
-      if (addButton) { addButton.disabled = true; addButton.textContent = 'Saving...'; }
-
-      try {
-        let db;
-        const firebaseReady = typeof firebase !== 'undefined' && firebase.apps.length;
-        if (firebaseReady) {
-          // Read the latest cloud copy first so an older browser cache cannot replace it.
-          const usersRef = firebase.database().ref('systemUsersDB');
-          const snapshot = await usersRef.once('value');
-          const cloudDb = snapshot.val();
-          if (cloudDb && typeof cloudDb === 'object' && !Array.isArray(cloudDb)) {
-            db = cloudDb;
-          } else {
-            // One-time migration for an existing local-only database when cloud is empty.
-            db = getUsersDB();
-          }
-
-          const previous = db[pin] || {};
-          db[pin] = {
-            ...previous,
-            name,
-            mobile,
-            shift: previous.shift || '',
-            shiftStartRaw: previous.shiftStartRaw || '',
-            shiftEndRaw: previous.shiftEndRaw || '',
-            loginAccessMode: previous.loginAccessMode || 'manual',
-            manualDutyOn: typeof previous.manualDutyOn === 'boolean' ? previous.manualDutyOn : false,
-            break: previous.break || 'Off Duty',
-            dutyOffDate: previous.dutyOffDate || localDateKey(),
-            leads: Array.isArray(previous.leads) ? previous.leads : [],
-            callHistory: Array.isArray(previous.callHistory) ? previous.callHistory : []
-          };
-
-          // Update only this PIN's node. A root-level set(db) can overwrite other
-          // users if another browser saves a slightly older copy at the same time.
-          onboardingWriteInProgress = true;
-          await usersRef.child(pin).set(db[pin]);
-          localStorage.setItem('systemUsersDB', JSON.stringify(db));
-        } else {
-          // Local-only mode is not shared with other devices or browsers.
-          db = getUsersDB();
-          const previous = db[pin] || {};
-          db[pin] = {
-            ...previous, name, mobile,
-            shift: previous.shift || '',
-            shiftStartRaw: previous.shiftStartRaw || '',
-            shiftEndRaw: previous.shiftEndRaw || '',
-            loginAccessMode: previous.loginAccessMode || 'manual',
-            manualDutyOn: typeof previous.manualDutyOn === 'boolean' ? previous.manualDutyOn : false,
-            break: previous.break || 'Off Duty',
-            dutyOffDate: previous.dutyOffDate || localDateKey(),
-            leads: Array.isArray(previous.leads) ? previous.leads : [],
-            callHistory: Array.isArray(previous.callHistory) ? previous.callHistory : []
-          };
-          localStorage.setItem('systemUsersDB', JSON.stringify(db));
-          alert('Firebase load nahi hua. User sirf isi browser mein save hua hai; GitHub live par sab devices ke liye Firebase configuration check karein.');
-        }
-
-        nameEl.value = '';
-        mobileEl.value = '';
-        pinEl.value = '';
-        renderAdminUserLists();
-        showToast(firebaseReady ? 'Agent Firebase par successfully save ho gaya!' : 'Agent local browser mein save hua.');
-      } catch (error) {
-        console.error('Agent onboarding failed:', error);
-        alert('Agent Firebase mein save nahi hua. Firebase Console mein Realtime Database Rules, project/database URL aur internet connection check karein. Error: ' + (error && error.message ? error.message : 'Unknown error'));
-      } finally {
-        onboardingWriteInProgress = false;
-        if (addButton) {
-          addButton.disabled = false;
-          addButton.innerHTML = '+ Add / Update Agent';
-        }
-      }
-    }
-
-    function adminSaveLoginAccess() {
-      const select = document.getElementById('adminShiftUserSelect');
-      const pin = select ? select.value : '';
-      const modeEl = document.getElementById('adminLoginAccessMode');
-      const mode = modeEl ? modeEl.value : 'shift';
       const db = getUsersDB();
-      if (!pin || !db[pin]) {
-        alert('Pehle Select Target Agent se user select karein.');
-        return;
-      }
-      db[pin].loginAccessMode = mode;
-      if (mode === 'manual') {
-        if (typeof db[pin].manualDutyOn !== 'boolean') db[pin].manualDutyOn = false;
-        db[pin].break = db[pin].manualDutyOn ? 'Working' : 'Off Duty';
-        db[pin].dutyOffDate = db[pin].manualDutyOn ? '' : localDateKey();
-      }
-      if (mode === 'anytime') {
-        // Clear shift-generated lockouts so the permission takes effect immediately.
-        db[pin].dutyOffDate = '';
-        if (db[pin].break === 'Off Duty') db[pin].break = 'Working';
-      }
+      db[pin] = { name, mobile, loginAccessMode: 'manual', manualDutyOn: false, leads: [], callHistory: [] };
       saveUsersDB(db);
+      document.getElementById('adminAgentName').value = '';
+      document.getElementById('adminAgentMobile').value = '';
+      document.getElementById('adminAgentPin').value = '';
       renderAdminUserLists();
-      const refreshed = document.getElementById('adminShiftUserSelect');
-      if (refreshed) { refreshed.value = pin; loadAdminShiftSettings(); }
-      showToast(mode === 'manual' ? 'Manual On/Off Control Enabled!' : (mode === 'anytime' ? 'Bina Shift Login Permission Enabled!' : 'Shift Login Permission Enabled!'));
-    }
-
-    function adminToggleManualDuty(pin) {
-      const db = getUsersDB();
-      const u = db[pin];
-      if (!u) return;
-      const isCurrentlyManualOn = u.loginAccessMode === 'manual' && u.manualDutyOn === true;
-      if (isCurrentlyManualOn) {
-        u.loginAccessMode = 'manual';
-        u.manualDutyOn = false;
-        u.break = 'Off Duty';
-        u.dutyOffDate = localDateKey();
-        // Immediately log out this user if the admin and user session share this browser.
-        if (localStorage.getItem('userRole') === 'USER' && localStorage.getItem('activeUserPin') === pin) {
-          localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole'); localStorage.removeItem('activeUserPin');
-          document.getElementById('splashScreen').style.display = 'flex'; updateLoginUi();
-        }
-      } else {
-        u.loginAccessMode = 'manual';
-        u.manualDutyOn = true;
-        u.break = 'Working';
-        u.dutyOffDate = '';
-        u.lastShiftUpdateAt = new Date().toISOString();
-        u.lastLoginDate = u.lastLoginDate || '';
-      }
-      saveUsersDB(db);
-      renderAdminUserLists();
-      const refreshed = document.getElementById('adminShiftUserSelect');
-      if (refreshed) { refreshed.value = pin; loadAdminShiftSettings(); }
-      showToast(u.manualDutyOn ? `${u.name}: Manual Duty ON — Login Allowed` : `${u.name}: Manual Duty OFF — Login Blocked`);
-    }
-
-    function loadAdminShiftSettings() {
-      const pinEl = document.getElementById('adminShiftUserSelect');
-      const pin = pinEl ? pinEl.value : ''; const db = getUsersDB(); const u = db[pin];
-      if (!u) return;
-      const accessModeEl = document.getElementById('adminLoginAccessMode'); if (accessModeEl) accessModeEl.value = ['anytime','manual'].includes(u.loginAccessMode) ? u.loginAccessMode : 'shift';
-      document.getElementById('adminShiftStart').value = u.shiftStartRaw || '09:00';
-      document.getElementById('adminShiftEnd').value = u.shiftEndRaw || '18:00';
-      document.getElementById('adminBreakStatus').value = u.break || 'Working';
-      document.getElementById('adminBreakTime').value = u.breakStartRaw || '13:00';
-      document.getElementById('adminBreakDuration').value = parseInt(u.breakDuration,10) || 30;
-      document.getElementById('adminTeaBreak1').value = u.teaBreak1Raw || '11:00';
-      document.getElementById('adminTeaDuration1').value = parseInt(u.teaDuration1,10) || 15;
-      document.getElementById('adminTeaBreak2').value = u.teaBreak2Raw || '16:00';
-      document.getElementById('adminTeaDuration2').value = parseInt(u.teaDuration2,10) || 15;
-    }
-
-    function adminSaveShift() {
-      const pin = document.getElementById('adminShiftUserSelect').value;
-      const startVal = document.getElementById('adminShiftStart').value;
-      const endVal = document.getElementById('adminShiftEnd').value;
-      const status = document.getElementById('adminBreakStatus').value;
-      const breakVal = document.getElementById('adminBreakTime').value;
-      const durationVal = document.getElementById('adminBreakDuration').value || 30;
-
-      const shiftStr = (startVal && endVal) ? `${formatTime12Hr(startVal)} - ${formatTime12Hr(endVal)}` : '09:00 AM - 06:00 PM';
-
-      const db = getUsersDB();
-      if (db[pin]) {
-        db[pin].shift = shiftStr;
-        db[pin].shiftStartRaw = startVal;
-        db[pin].shiftEndRaw = endVal;
-        db[pin].break = status;
-        db[pin].breakStartRaw = breakVal;
-        db[pin].breakDuration = Math.max(1, parseInt(durationVal, 10) || 30);
-        db[pin].teaBreak1Raw = document.getElementById('adminTeaBreak1').value || '11:00';
-        db[pin].teaDuration1 = Math.max(1, parseInt(document.getElementById('adminTeaDuration1').value, 10) || 15);
-        db[pin].teaBreak2Raw = document.getElementById('adminTeaBreak2').value || '16:00';
-        db[pin].teaDuration2 = Math.max(1, parseInt(document.getElementById('adminTeaDuration2').value, 10) || 15);
-        db[pin].dutyOffDate = '';
-        db[pin].lastShiftUpdateAt = new Date().toISOString();
-        ['shiftAlarmFiredDate','lunchStartFiredDate','lunchEndFiredDate','tea1StartFiredDate','tea1EndFiredDate','tea2StartFiredDate','tea2EndFiredDate'].forEach(k=>{ db[pin][k]=''; });
-        if (status === 'Off Duty') { db[pin].break = 'Off Duty'; db[pin].dutyOffDate = localDateKey(); } else { db[pin].break = 'Working'; db[pin].dutyOffDate = ''; }
-
-        saveUsersDB(db);
-        renderAdminUserLists();
-        showToast('Shift & Break Updated!');
-      }
+      showToast('Agent Onboarded!');
     }
 
     function adminPushLeads() {
@@ -2034,19 +1375,12 @@
     }
 
     function deleteAdminUser(pin) {
-      if(!confirm('Is Agent ko permanently delete aur block karein?')) return;
+      if(!confirm('Is Agent ko permanently delete karein?')) return;
       const db = getUsersDB();
       delete db[pin];
       saveUsersDB(db);
-
-      const blacklisted = getBlacklistedPins();
-      if (!blacklisted.includes(pin)) {
-        blacklisted.push(pin);
-        saveBlacklistedPins(blacklisted);
-      }
-
       renderAdminUserLists();
-      showToast('Agent Deleted & Permanently Blocked!');
+      showToast('Agent Deleted!');
     }
 
     function switchTab(tabId, el) {
@@ -2068,8 +1402,6 @@
     let gameTimer = null;
     let gameAnimation = null;
     let gameScore = 0;
-    let snakeState = null;
-    let racerState = null;
     const gameCanvas = document.getElementById('gameCanvas');
     const gameCtx = gameCanvas.getContext('2d');
 
@@ -2094,14 +1426,11 @@
       saveBestScore();
       const ctx=gameCtx,c=gameCanvas; ctx.fillStyle='rgba(2,6,23,.78)';ctx.fillRect(0,0,c.width,c.height);
       ctx.textAlign='center';ctx.fillStyle='#fff';ctx.font='900 29px system-ui';ctx.fillText(msg,c.width/2,235);
-      ctx.font='800 17px system-ui';ctx.fillText('Score: '+gameScore,c.width/2,268);
-      ctx.font='700 13px system-ui';ctx.fillStyle='#d8b4fe';ctx.fillText('↻ RESTART button se dobara khelein',c.width/2,297);
     }
 
     function initSnake(){
-      snakeState={cols:20,rows:25,cell:20,snake:[{x:10,y:13},{x:9,y:13},{x:8,y:13}],dir:{x:1,y:0},next:{x:1,y:0},food:{x:15,y:10},tickMs:235,pulse:0,particles:[]};
+      snakeState={cols:20,rows:25,cell:20,snake:[{x:10,y:13},{x:9,y:13},{x:8,y:13}],dir:{x:1,y:0},next:{x:1,y:0},food:{x:15,y:10},tickMs:235,particles:[]};
       placeSnakeFood(); gameRunning=true; drawSnake(); scheduleSnake();
-      document.getElementById('gameNote').textContent='SNAKE • Smooth start • Food ke saath speed bahut dheere badhegi';
     }
     function scheduleSnake(){ if(!gameRunning)return; clearTimeout(gameTimer); gameTimer=setTimeout(()=>{stepSnake();scheduleSnake();},snakeState.tickMs); }
     function placeSnakeFood(){ let f; do f={x:Math.floor(Math.random()*snakeState.cols),y:Math.floor(Math.random()*snakeState.rows)}; while(snakeState.snake.some(p=>p.x===f.x&&p.y===f.y)); snakeState.food=f; }
@@ -2110,79 +1439,49 @@
       if(n.x<0||n.x>=snakeState.cols||n.y<0||n.y>=snakeState.rows||snakeState.snake.some(p=>p.x===n.x&&p.y===n.y))return gameOver('SNAKE OVER');
       snakeState.snake.unshift(n);
       if(n.x===snakeState.food.x&&n.y===snakeState.food.y){
-        gameScore+=10; snakeState.tickMs=Math.max(155,snakeState.tickMs-3); snakeState.particles.push({x:n.x*20+10,y:n.y*20+10,t:1}); placeSnakeFood(); updateGameHud();
+        gameScore+=10; snakeState.tickMs=Math.max(155,snakeState.tickMs-3); placeSnakeFood(); updateGameHud();
       } else snakeState.snake.pop(); drawSnake();
     }
     function drawSnake(){
-      const c=gameCanvas,ctx=gameCtx,cell=20,t=performance.now()/500; ctx.fillStyle='#030712';ctx.fillRect(0,0,c.width,c.height);
-      for(let y=0;y<c.height;y+=cell)for(let x=0;x<c.width;x+=cell){ctx.fillStyle=((x/cell+y/cell)%2===0)?'#07111f':'#091525';ctx.fillRect(x,y,cell,cell);}
-      ctx.strokeStyle='rgba(56,189,248,.07)';ctx.lineWidth=1; for(let x=0;x<=c.width;x+=cell){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,c.height);ctx.stroke();}
-      const fx=snakeState.food.x*cell+10,fy=snakeState.food.y*cell+10,r=7+2*Math.sin(t*4); ctx.shadowBlur=18;ctx.shadowColor='#f43f5e';ctx.fillStyle='#fb7185';ctx.beginPath();ctx.arc(fx,fy,r,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
-      snakeState.snake.forEach((p,i)=>{const px=p.x*cell+2,py=p.y*cell+2;const g=ctx.createLinearGradient(px,py,px+16,py+16);g.addColorStop(0,i===0?'#86efac':'#22c55e');g.addColorStop(1,i===0?'#16a34a':'#15803d');ctx.fillStyle=g;ctx.shadowBlur=i===0?12:4;ctx.shadowColor='#22c55e';ctx.beginPath();ctx.roundRect(px,py,16,16,5);ctx.fill();ctx.shadowBlur=0;if(i===0){ctx.fillStyle='#052e16';ctx.beginPath();ctx.arc(px+11,py+5,1.5,0,Math.PI*2);ctx.fill();}});
+      const c=gameCanvas,ctx=gameCtx,cell=20; ctx.fillStyle='#030712';ctx.fillRect(0,0,c.width,c.height);
+      const fx=snakeState.food.x*cell+10,fy=snakeState.food.y*cell+10; ctx.fillStyle='#fb7185';ctx.beginPath();ctx.arc(fx,fy,7,0,Math.PI*2);ctx.fill();
+      snakeState.snake.forEach((p,i)=>{const px=p.x*cell+2,py=p.y*cell+2;ctx.fillStyle=i===0?'#86efac':'#22c55e';ctx.beginPath();ctx.roundRect(px,py,16,16,5);ctx.fill();});
     }
 
     function initRacer(type){
-      racerState={type,lane:1,targetLane:1,playerX:200,playerY:420,speed:0.75,targetSpeed:0.75,obstacles:[],roadOffset:0,lastSpawn:0,lastTs:0,anim:0,shake:0,boost:0,particles:[],braking:false};
-      gameRunning=true;gameScore=0;updateGameHud();document.getElementById('gameNote').textContent=(type==='car'?'CAR RACING':'BIKE RACING')+' • Smooth steering • Speed gradually increases';racerLoop(0);
+      racerState={type,lane:1,targetLane:1,playerX:200,playerY:420,speed:0.75,targetSpeed:0.75,obstacles:[],roadOffset:0,lastSpawn:0,lastTs:0,anim:0,shake:0,particles:[],braking:false};
+      gameRunning=true;gameScore=0;updateGameHud();racerLoop(0);
     }
     function spawnObstacle(){
       if(racerState.obstacles.length>=2) return;
-      const free=[];
-      for(let lane=0;lane<3;lane++){
-        const blocked=racerState.obstacles.some(o=>o.lane===lane && o.y<170);
-        if(!blocked) free.push(lane);
-      }
-      if(!free.length) return;
-      const lane=free[Math.floor(Math.random()*free.length)];
-      racerState.obstacles.push({lane,y:-125,speed:Math.max(.62,racerState.speed*(.62+Math.random()*.10)),rot:0});
+      const lane=Math.floor(Math.random()*3);
+      racerState.obstacles.push({lane,y:-125,speed:0.7,rot:0});
     }
     function racerLoop(ts){
       if(!gameRunning)return; const ctx=gameCtx,c=gameCanvas,dt=racerState.lastTs?Math.min(2,(ts-racerState.lastTs)/16.67):1;racerState.lastTs=ts;racerState.anim+=dt;
-      const baseTarget=Math.min(2.35,.72+gameScore*.00042);
-      racerState.targetSpeed=racerState.braking?0.38:baseTarget;
+      racerState.targetSpeed=racerState.braking?0.38:1.2;
       racerState.speed+=(racerState.targetSpeed-racerState.speed)*.018*dt;
       racerState.playerX+=( [100,200,300][racerState.targetLane]-racerState.playerX)*.075*dt;
       racerState.roadOffset=(racerState.roadOffset+racerState.speed*4*dt)%48;
-      racerState.lastSpawn+=dt*16.67;const gap=Math.max(1250,2050-gameScore*.22);
-      if(racerState.lastSpawn>gap){spawnObstacle();racerState.lastSpawn=0;}
-      drawRoad(ctx,c); drawParticles(ctx);
+      racerState.lastSpawn+=dt*16.67;
+      if(racerState.lastSpawn>1500){spawnObstacle();racerState.lastSpawn=0;}
+      drawRoad(ctx,c);
       const laneX=[100,200,300];
-      racerState.obstacles.forEach(o=>{o.y+=o.speed*dt*1.25;o.rot=Math.sin(racerState.anim*.04+o.lane)*.025;drawVehicle(ctx,laneX[o.lane],o.y,racerState.type,false,racerState.anim,o.rot);});
+      racerState.obstacles.forEach(o=>{o.y+=o.speed*dt*1.25;drawVehicle(ctx,laneX[o.lane],o.y,racerState.type,false,racerState.anim,o.rot);});
       racerState.obstacles=racerState.obstacles.filter(o=>o.y<c.height+110);
       drawVehicle(ctx,racerState.playerX,racerState.playerY,racerState.type,true,racerState.anim,0);
-      for(const o of racerState.obstacles){if(o.lane===racerState.targetLane&&Math.abs(o.y-racerState.playerY)<62){racerState.shake=10;return gameOver(racerState.type==='car'?'CAR CRASH!':'BIKE CRASH!');}}
-      if(racerState.speed>1.5&&Math.random()<.08){racerState.particles.push({x:racerState.playerX,y:racerState.playerY+34,t:1});}
+      for(const o of racerState.obstacles){if(o.lane===racerState.targetLane&&Math.abs(o.y-racerState.playerY)<62){return gameOver('CRASH!');}}
       gameScore+=1;updateGameHud();gameAnimation=requestAnimationFrame(racerLoop);
     }
     function drawRoad(ctx,c){
-      const sky=ctx.createLinearGradient(0,0,0,c.height);sky.addColorStop(0,'#172554');sky.addColorStop(.38,'#0f172a');sky.addColorStop(1,'#020617');ctx.fillStyle=sky;ctx.fillRect(0,0,c.width,c.height);
-      ctx.fillStyle='#14532d';ctx.fillRect(0,0,55,c.height);ctx.fillRect(345,0,55,c.height);
-      for(let y=-60+(racerState.roadOffset*.7);y<c.height;y+=78){ctx.fillStyle='#365314';ctx.fillRect(18,y,18,34);ctx.fillRect(364,y,18,34);}
+      ctx.fillStyle='#020617';ctx.fillRect(0,0,c.width,c.height);
       ctx.fillStyle='#1f2937';ctx.fillRect(55,0,290,c.height);
-      const road=ctx.createLinearGradient(55,0,345,0);road.addColorStop(0,'#111827');road.addColorStop(.5,'#374151');road.addColorStop(1,'#111827');ctx.fillStyle=road;ctx.fillRect(55,0,290,c.height);
-      ctx.strokeStyle='rgba(255,255,255,.78)';ctx.lineWidth=3;ctx.setLineDash([25,23]);ctx.lineDashOffset=-racerState.roadOffset;[150,250].forEach(x=>{ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,c.height);ctx.stroke();});ctx.setLineDash([]);
       ctx.strokeStyle='#f8fafc';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(58,0);ctx.lineTo(58,c.height);ctx.moveTo(342,0);ctx.lineTo(342,c.height);ctx.stroke();
     }
-    function drawParticles(ctx){
-      racerState.particles.forEach(p=>{p.y+=3;p.t-=.05;ctx.globalAlpha=Math.max(0,p.t);ctx.fillStyle='#fbbf24';ctx.beginPath();ctx.arc(p.x+(Math.random()-.5)*6,p.y,2.5,0,Math.PI*2);ctx.fill();});racerState.particles=racerState.particles.filter(p=>p.t>0);ctx.globalAlpha=1;
-    }
-    function drawVehicle(ctx,x,y,type,player,anim=0,rot=0){
-      ctx.save();ctx.translate(x,y);ctx.rotate(rot);const bob=player?Math.sin(anim*.08)*.8:0;ctx.translate(0,bob);
-      if(type==='car'){
-        ctx.shadowBlur=player?16:8;ctx.shadowColor=player?'#38bdf8':'#ef4444';
-        const body=ctx.createLinearGradient(-27,-38,27,38);body.addColorStop(0,player?'#7dd3fc':'#fb7185');body.addColorStop(.45,player?'#0284c7':'#dc2626');body.addColorStop(1,player?'#075985':'#7f1d1d');ctx.fillStyle=body;ctx.beginPath();ctx.roundRect(-25,-38,50,76,11);ctx.fill();ctx.shadowBlur=0;
-        ctx.fillStyle='#020617';ctx.beginPath();ctx.roundRect(-17,-22,34,22,7);ctx.fill();ctx.fillStyle='#93c5fd';ctx.globalAlpha=.72;ctx.beginPath();ctx.roundRect(-14,-19,28,13,5);ctx.fill();ctx.globalAlpha=1;
-        ctx.fillStyle='#111827';ctx.fillRect(-30,-22,7,19);ctx.fillRect(23,-22,7,19);ctx.fillRect(-30,12,7,19);ctx.fillRect(23,12,7,19);
-        ctx.fillStyle='#fef08a';ctx.fillRect(-17,-35,9,4);ctx.fillRect(8,-35,9,4);ctx.fillStyle='#fb7185';ctx.fillRect(-17,31,9,3);ctx.fillRect(8,31,9,3);
-        ctx.strokeStyle='rgba(255,255,255,.35)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-20,2);ctx.lineTo(20,2);ctx.stroke();
-      } else {
-        ctx.shadowBlur=player?14:6;ctx.shadowColor=player?'#a855f7':'#f97316';
-        ctx.fillStyle='#0b0f19';ctx.beginPath();ctx.arc(0,-28,10,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(0,29,10,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
-        ctx.strokeStyle='#94a3b8';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,-28);ctx.lineTo(-11,4);ctx.lineTo(0,29);ctx.lineTo(14,3);ctx.closePath();ctx.stroke();
-        const bike=ctx.createLinearGradient(-11,-14,12,12);bike.addColorStop(0,player?'#d8b4fe':'#fdba74');bike.addColorStop(1,player?'#7e22ce':'#c2410c');ctx.fillStyle=bike;ctx.beginPath();ctx.roundRect(-12,-14,24,25,7);ctx.fill();
-        ctx.fillStyle='#111827';ctx.beginPath();ctx.arc(0,-22,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#e2e8f0';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-12,-15);ctx.lineTo(12,-15);ctx.stroke();
-        if(player){ctx.fillStyle='rgba(168,85,247,.5)';ctx.beginPath();ctx.ellipse(0,43,5+3*Math.sin(anim*.1),15,0,0,Math.PI*2);ctx.fill();}
-      }ctx.restore();
+    function drawVehicle(ctx,x,y,type,player){
+      ctx.save();ctx.translate(x,y);
+      ctx.fillStyle=player?'#0284c7':'#dc2626';ctx.beginPath();ctx.roundRect(-25,-38,50,76,11);ctx.fill();
+      ctx.restore();
     }
 
     function gameControl(action){
@@ -2191,110 +1490,23 @@
       else {if(action==='left')racerState.targetLane=Math.max(0,racerState.targetLane-1);if(action==='right')racerState.targetLane=Math.min(2,racerState.targetLane+1);}
     }
 
-    function setBrake(active){
-      if(!gameRunning)return;
-      const b=document.getElementById('gameBrake');
-      if(currentGame==='snake'){
-        if(active){ snakeState.tickMs=Math.min(420,snakeState.tickMs+115); }
-        else { snakeState.tickMs=Math.max(155,snakeState.tickMs-115); }
-        if(b)b.classList.toggle('active',active);
-        return;
-      }
-      racerState.braking=active;
-      if(b)b.classList.toggle('active',active);
-    }
-
-    const brakeBtn=document.getElementById('gameBrake');
-    if(brakeBtn){
-      brakeBtn.addEventListener('pointerdown',e=>{e.preventDefault();setBrake(true);});
-      ['pointerup','pointercancel','pointerleave'].forEach(ev=>brakeBtn.addEventListener(ev,()=>setBrake(false)));
-    }
-
-    document.addEventListener('keydown', e=>{
-      if(!gameRunning) return;
-      const k=e.key.toLowerCase();
-      const map={arrowleft:'left',a:'left',arrowright:'right',d:'right',arrowup:'up',w:'up',arrowdown:'down',s:'down'};
-      if(k===' '){e.preventDefault();setBrake(true);return;}
-      if(map[k]) { e.preventDefault(); gameControl(map[k]); }
-    }, {passive:false});
-    document.addEventListener('keyup',e=>{if(e.key===' '){e.preventDefault();setBrake(false);}}, {passive:false});
-    document.querySelectorAll('.game-control').forEach(btn=>{
-      const act=btn.getAttribute('aria-label')?.toLowerCase();
-      btn.addEventListener('pointerdown',e=>{e.preventDefault();const a=act==='left'?'left':act==='right'?'right':act==='up'?'up':'down';gameControl(a);});
-    });
-    document.getElementById('gameModal').addEventListener('touchmove',e=>{ if(gameRunning)e.preventDefault(); }, {passive:false});
-  
-    let activeSummaryCategory = '';
     let stayOnCategoryList = false;
-    const summaryCategoryLabels = {
-      interested: '👍 Interested', not_interested: '👎 Not Interested', time: '⏰ Timing / Notes',
-      call_not_pick: '📞 Not Pick', working: '💼 Working', coming: '🔔 Coming', bihar: '📍 Bihar'
-    };
     function openCategoryModal(category) {
-      activeSummaryCategory = category;
-      const overlay = document.getElementById('categoryListOverlay');
-      document.getElementById('categoryListHeading').textContent = (summaryCategoryLabels[category] || 'Number') + ' — Numbers';
-      renderCategoryCallList();
-      overlay.style.display = 'flex';
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+      document.getElementById('categoryListOverlay').style.display = 'flex';
     }
     function closeCategoryModal() {
-      const overlay = document.getElementById('categoryListOverlay');
-      overlay.style.display = 'none';
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      document.getElementById('categoryListOverlay').style.display = 'none';
     }
-    function toggleStayOnList() {
-      stayOnCategoryList = !stayOnCategoryList;
-      const btn = document.getElementById('stayOnListBtn');
-      btn.textContent = stayOnCategoryList ? 'ON · Stay on list' : 'OFF · Normal';
-      btn.classList.toggle('on', stayOnCategoryList);
-      btn.title = stayOnCategoryList ? 'Call ke baad isi list par rahenge' : 'Call par normal mode: list band ho jayegi';
-    }
-    function renderCategoryCallList() {
-      const container = document.getElementById('categoryNumberList');
-      if (!container) return;
-      const matches = numbersData.map((item, index) => ({item, index})).filter(x => x.item.category === activeSummaryCategory);
-      if (!matches.length) {
-        container.innerHTML = '<div class="category-empty">Is box mein abhi koi number nahi hai.</div>';
-        return;
-      }
-      container.innerHTML = matches.map(({item,index}) => {
-        const note = item.note ? ` <span style="color:#94a3b8">(${escapeCategoryText(item.note)})</span>` : '';
-        const phone = escapeCategoryText(item.number || '');
-        return `<div class="category-number-row"><div class="category-number-text">${phone}${note}</div><a class="category-call-btn" href="tel:${phone.replace(/[^+\d]/g,'')}" onclick="categoryListCall(${index});">📞 Call</a></div>`;
-      }).join('');
-    }
-    function escapeCategoryText(value) {
-      return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-    }
-    function categoryListCall(index) {
-      markAsCalled(index);
-      if (!stayOnCategoryList) setTimeout(closeCategoryModal, 250);
-    }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && document.getElementById('categoryListOverlay')?.style.display === 'flex') closeCategoryModal();
-    });
   </script>
 
-  <div class="time-alarm-banner" id="timeAlarmBanner" role="alert" aria-live="assertive">
-    <strong>🔔 CALL TIME! Alarm</strong>
-    <span>Number: <b id="timeAlarmNumber"></b></span><br>
-    <span id="timeAlarmNote"></span><br>
-    <button type="button" onclick="dismissTimeAlarm()">Dismiss</button>
-  </div>
-
-  <div class="category-list-overlay" id="categoryListOverlay" onclick="if(event.target===this)closeCategoryModal()" aria-hidden="true">
-    <section class="category-list-card" role="dialog" aria-modal="true" aria-labelledby="categoryListHeading">
+  <!-- OVERLAYS -->
+  <div class="category-list-overlay" id="categoryListOverlay" onclick="if(event.target===this)closeCategoryModal()">
+    <section class="category-list-card">
       <div class="category-list-header">
         <div class="category-list-heading" id="categoryListHeading">Number List</div>
-        <div class="category-list-tools">
-          <button type="button" id="stayOnListBtn" class="stay-toggle" onclick="toggleStayOnList()">OFF · Normal</button>
-          <button type="button" class="category-close" onclick="closeCategoryModal()">✕</button>
-        </div>
+        <button type="button" class="category-close" onclick="closeCategoryModal()">✕</button>
       </div>
-      <div class="category-number-list" id="categoryNumberList"></div>
+      <div class="category-number-list" id="categoryNumberList"><div class="category-empty">List items will appear here.</div></div>
     </section>
   </div>
 
