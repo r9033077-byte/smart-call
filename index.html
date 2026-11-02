@@ -336,7 +336,7 @@
     <div class="dutyoff-card">
       <div class="dutyoff-icon"><i class="fas fa-user-clock"></i></div>
       <h3 style="color:#ef4444; font-size:18px; font-weight:bold;">Aap Duty Off Hain!</h3>
-      <p style="color:#cbd5e1; font-size:12px; line-height:1.5;">Kripya apne Admin se sampark karein. Admin dwara aapka ON button activate karne ke baad hi aap PIN se login kar sakte hain.</p>
+      <p style="color:#cbd5e1; font-size:12px; line-height:1.5;">Kripya apne Admin se sampark karein. Admin dwara aapka ON button activate karne ke baad hi aap PIN से login kar sakte hain.</p>
       <button class="btn-primary" style="background:#ef4444; color:#fff; width:100%; padding:10px; border-radius:10px; margin-top:5px; font-weight:bold;" onclick="closeDutyOffModal()">OK, Samajh Gaya</button>
     </div>
   </div>
@@ -409,8 +409,6 @@
         <div class="summary-box time-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('time')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('time')}"><div class="summary-header"><span class="summary-title" style="color:#eab308;">⏰ Time (<span id="countTime">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('time')">📋</button></div><div class="summary-list" id="listTime">Koi nahi</div></div>
         <div class="summary-box not-pick-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('call_not_pick')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('call_not_pick')}"><div class="summary-header"><span class="summary-title" style="color:#f97316;">📞 Not Pick (<span id="countNotPick">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('call_not_pick')">📋</button></div><div class="summary-list" id="listNotPick">Koi nahi</div></div>
         <div class="summary-box working-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('working')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('working')}"><div class="summary-header"><span class="summary-title" style="color:#a855f7;">💼 Working (<span id="countWorking">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('working')">📋</button></div><div class="summary-list" id="listWorking">Koi nahi</div></div>
-        <div class="summary-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('coming')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('coming')}" style="border-top:3px solid #06b6d4;"><div class="summary-header"><span class="summary-title" style="color:#06b6d4;">🔔 Coming (<span id="countComing">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('coming')">📋</button></div><div class="summary-list" id="listComing">Koi nahi</div></div>
-        <div class="summary-box clickable-summary" role="button" tabindex="0" onclick="openCategoryModal('bihar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCategoryModal('bihar')}" style="border-top:3px solid #f59e0b;"><div class="summary-header"><span class="summary-title" style="color:#f59e0b;">📍 Bihar (<span id="countBihar">0</span>)</span><button class="copy-btn" onclick="event.stopPropagation();copyCategoryList('bihar')">📋</button></div><div class="summary-list" id="listBihar">Koi nahi</div></div>
       </div>
     </div>
 
@@ -464,14 +462,12 @@
       
       <div class="client-filter-box">
         <select id="clientFilterCategory" onchange="renderClientTable()">
-          <option value="all">🔍 All Categories (Interested / Not / Timing / Not Pick / Working / Coming / Bihar)</option>
+          <option value="all">🔍 All Categories (Interested / Not / Timing / Not Pick / Working)</option>
           <option value="interested">👍 Interested Only</option>
           <option value="not_interested">👎 Not Interested Only</option>
           <option value="time">⏰ Timing / Notes Only</option>
           <option value="call_not_pick">📞 Call Not Pick Only</option>
           <option value="working">💼 Working Only</option>
-          <option value="coming">🔔 Coming Only</option>
-          <option value="bihar">📍 Bihar Only</option>
         </select>
         <input type="text" id="clientSearchInput" placeholder="🔍 Search number or timing..." oninput="renderClientTable()">
       </div>
@@ -735,11 +731,69 @@
       }
     }
 
-    function saveUsersDB(dbData) { 
-      localStorage.setItem('systemUsersDB', JSON.stringify(dbData));
+    // Keep a baseline so each client only sends its own changes, never a stale full DB.
+    let lastKnownUsersDB = null;
+    let deletedUserPins = [];
+    function cleanUsersDB(raw) {
+      const out = {};
+      if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return out;
+      Object.keys(raw).forEach(key => {
+        if (key !== '__deletedPins' && !deletedUserPins.includes(String(key))) out[key] = raw[key];
+      });
+      return out;
+    }
+    function saveUsersDB(dbData) {
+      const clean = cleanUsersDB(dbData);
+      localStorage.setItem('systemUsersDB', JSON.stringify(clean));
+      if (typeof firebase === 'undefined' || !firebase.apps.length) return;
+      const hadBaseline = lastKnownUsersDB !== null;
+      const before = lastKnownUsersDB || {};
+      const changed = {};
+      const removed = [];
+      Object.keys(clean).forEach(pin => {
+        if (JSON.stringify(clean[pin]) !== JSON.stringify(before[pin])) changed[pin] = clean[pin];
+      });
+      Object.keys(before).forEach(pin => { if (!Object.prototype.hasOwnProperty.call(clean, pin)) removed.push(pin); });
+      if (!Object.keys(changed).length && !removed.length) return;
+      firebase.database().ref('systemUsersDB').transaction(current => {
+        const next = current && typeof current === 'object' ? current : {};
+        const tombstones = next.__deletedPins && typeof next.__deletedPins === 'object' ? next.__deletedPins : {};
+        removed.forEach(pin => { if (!tombstones[pin]) delete next[pin]; });
+        Object.keys(changed).forEach(pin => {
+          if (!tombstones[pin] && (hadBaseline || !Object.prototype.hasOwnProperty.call(next, pin))) next[pin] = changed[pin];
+        });
+        next.__deletedPins = tombstones;
+        return next;
+      }).then(result => {
+        if (result && result.snapshot) {
+          const cloud = result.snapshot.val() || {};
+          deletedUserPins = Object.keys(cloud.__deletedPins || {});
+          const visible = cleanUsersDB(cloud);
+          lastKnownUsersDB = JSON.parse(JSON.stringify(visible));
+          localStorage.setItem('systemUsersDB', JSON.stringify(visible));
+        }
+      }).catch(err => console.error('User DB sync failed:', err));
+    }
+    function permanentlyDeleteUser(pin) {
+      pin = String(pin);
+      deletedUserPins = Array.from(new Set([...deletedUserPins, pin]));
+      const local = getUsersDB(); delete local[pin];
+      localStorage.setItem('systemUsersDB', JSON.stringify(local));
+      const blacklist = Array.from(new Set([...getBlacklistedPins(), pin]));
+      localStorage.setItem('blacklistedPins', JSON.stringify(blacklist));
       if (typeof firebase !== 'undefined' && firebase.apps.length) {
-        firebase.database().ref('systemUsersDB').set(dbData);
+        return firebase.database().ref('systemUsersDB').transaction(current => {
+          const next = current && typeof current === 'object' ? current : {};
+          next.__deletedPins = next.__deletedPins || {};
+          next.__deletedPins[pin] = true;
+          delete next[pin];
+          return next;
+        }).then(() => firebase.database().ref('blacklistedPins').transaction(current => {
+          const list = Array.isArray(current) ? current : [];
+          return Array.from(new Set([...list, pin]));
+        })).catch(err => console.error('Permanent delete sync failed:', err));
       }
+      return Promise.resolve();
     }
 
     function getBlacklistedPins() {
@@ -754,10 +808,11 @@
       }
     }
 
-    function saveBlacklistedPins(arr) { 
-      localStorage.setItem('blacklistedPins', JSON.stringify(arr));
+    function saveBlacklistedPins(arr) {
+      const safe = Array.from(new Set((Array.isArray(arr) ? arr : []).map(String)));
+      localStorage.setItem('blacklistedPins', JSON.stringify(safe));
       if (typeof firebase !== 'undefined' && firebase.apps.length) {
-        firebase.database().ref('blacklistedPins').set(arr);
+        firebase.database().ref('blacklistedPins').transaction(current => Array.from(new Set([...(Array.isArray(current) ? current : []), ...safe]))).catch(err => console.error('Blacklist sync failed:', err));
       }
     }
 
@@ -775,8 +830,6 @@
         time: leads.filter(i => i.category === 'time').length,
         notPick: leads.filter(i => i.category === 'call_not_pick').length,
         working: leads.filter(i => i.category === 'working').length,
-        coming: leads.filter(i => i.category === 'coming').length,
-        bihar: leads.filter(i => i.category === 'bihar').length,
         callLogs: history.length
       };
     }
@@ -784,10 +837,19 @@
     window.addEventListener('load', () => {
       if (typeof firebase !== 'undefined' && firebase.apps.length) {
         firebase.database().ref('systemUsersDB').on('value', snapshot => {
-          const cloudDb = snapshot.val();
-          if (cloudDb) {
-            localStorage.setItem('systemUsersDB', JSON.stringify(cloudDb));
-            if (localStorage.getItem('userRole') === 'USER') {
+          const rawCloudDb = snapshot.val() || {};
+          deletedUserPins = Object.keys(rawCloudDb.__deletedPins || {});
+          const cloudDb = cleanUsersDB(rawCloudDb);
+          lastKnownUsersDB = JSON.parse(JSON.stringify(cloudDb));
+          localStorage.setItem('systemUsersDB', JSON.stringify(cloudDb));
+          const currentPin = getActiveUserPin();
+          if (currentPin && deletedUserPins.includes(String(currentPin))) {
+            localStorage.removeItem('isLoggedIn'); localStorage.removeItem('userRole'); localStorage.removeItem('activeUserPin');
+            const splash = document.getElementById('splashScreen'); if (splash) splash.style.display = 'flex';
+            updateLoginUi();
+            showDutyOffModal('Yeh account Admin dwara permanently delete aur block kar diya gaya hai.');
+          }
+          if (localStorage.getItem('userRole') === 'USER') {
               const pin = getActiveUserPin();
               if (pin && cloudDb[pin]) {
                 const activeUser = cloudDb[pin];
@@ -803,8 +865,12 @@
                 }
               }
             }
-            renderAdminUserLists();
-          }
+          renderAdminUserLists();
+        });
+        firebase.database().ref('blacklistedPins').on('value', snapshot => {
+          const cloudList = snapshot.val();
+          const merged = Array.from(new Set([...(Array.isArray(cloudList) ? cloudList : []), ...deletedUserPins].map(String)));
+          localStorage.setItem('blacklistedPins', JSON.stringify(merged));
         });
       }
 
@@ -901,14 +967,12 @@
             </a>
             <button class="delete-single-btn" onclick="deleteSingleNumber(${originalIndex})">🗑</button>
           </div>
-          <div class="status-buttons-row">
+          <div class="status-buttons-row" style="grid-template-columns: repeat(5, minmax(0, 1fr));">
             <button class="sub-btn ${item.category === 'interested' ? 'interested' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'interested')">👍 Int</button>
             <button class="sub-btn ${item.category === 'not_interested' ? 'not-interested' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'not_interested')">👎 Not Int</button>
             <button class="sub-btn ${item.category === 'time' ? 'time' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'time')">⏰ Time</button>
             <button class="sub-btn ${item.category === 'call_not_pick' ? 'not-pick' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'call_not_pick')">📞 Not Pick</button>
             <button class="sub-btn ${item.category === 'working' ? 'working' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'working')">💼 Working</button>
-            <button class="sub-btn ${item.category === 'coming' ? 'coming' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'coming')">🔔 Coming</button>
-            <button class="sub-btn ${item.category === 'bihar' ? 'bihar' : ''} ${isBtnDisabled ? 'disabled' : ''}" ${isBtnDisabled ? 'disabled' : ''} onclick="setCategory(${originalIndex}, 'bihar')">📍 Bihar</button>
           </div>
         `;
         listContainer.appendChild(card);
@@ -1119,15 +1183,13 @@
     }
 
     function renderSummaryLists() {
-      const categories = ['interested', 'not_interested', 'time', 'call_not_pick', 'working', 'coming', 'bihar'];
+      const categories = ['interested', 'not_interested', 'time', 'call_not_pick', 'working'];
       const mapIds = {
         'interested': { count: 'countInt', list: 'listInt' },
         'not_interested': { count: 'countNotInt', list: 'listNotInt' },
         'time': { count: 'countTime', list: 'listTime' },
         'call_not_pick': { count: 'countNotPick', list: 'listNotPick' },
-        'working': { count: 'countWorking', list: 'listWorking' },
-        'coming': { count: 'countComing', list: 'listComing' },
-        'bihar': { count: 'countBihar', list: 'listBihar' }
+        'working': { count: 'countWorking', list: 'listWorking' }
       };
       categories.forEach(cat => {
         const filtered = numbersData.filter(item => item.category === cat);
@@ -1515,9 +1577,7 @@
         { key: 'not_interested', label: '👎 Not Interested', color: '#ef4444' },
         { key: 'time', label: '⏰ Timing / Notes', color: '#eab308' },
         { key: 'call_not_pick', label: '📞 Not Pick', color: '#f97316' },
-        { key: 'working', label: '💼 Working', color: '#a855f7' },
-        { key: 'coming', label: '🔔 Coming', color: '#06b6d4' },
-        { key: 'bihar', label: '📍 Bihar', color: '#f59e0b' }
+        { key: 'working', label: '💼 Working', color: '#a855f7' }
       ];
       const rows = [];
       Object.keys(db).forEach(pin => {
@@ -1776,8 +1836,6 @@
             ${statTile(s.time,'Timing','#eab308','time')}
             ${statTile(s.notPick,'Not Pick','#f97316','call_not_pick')}
             ${statTile(s.working,'Working','#a855f7','working')}
-            ${statTile(s.coming,'Coming','#06b6d4','coming')}
-            ${statTile(s.bihar,'Bihar','#f59e0b','bihar')}
             ${statTile(s.callLogs,'Logs','#38bdf8','logs')}
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;font-size:11px;color:#38bdf8;font-weight:bold;">
@@ -1818,6 +1876,10 @@
         return;
       }
       const db = getUsersDB();
+      if (getBlacklistedPins().includes(pin) || deletedUserPins.includes(pin)) {
+        alert('Yeh PIN pehle permanently delete/block kiya ja chuka hai. Naya 4-digit PIN use karein.');
+        return;
+      }
       db[pin] = { name, mobile, shift: '', shiftStartRaw: '', shiftEndRaw: '', loginAccessMode: 'manual', manualDutyOn: false, break: 'Off Duty', dutyOffDate: localDateKey(), leads: [], callHistory: [] };
       saveUsersDB(db);
       document.getElementById('adminAgentName').value = '';
@@ -1954,18 +2016,10 @@
 
     function deleteAdminUser(pin) {
       if(!confirm('Is Agent ko permanently delete aur block karein?')) return;
-      const db = getUsersDB();
-      delete db[pin];
-      saveUsersDB(db);
-
-      const blacklisted = getBlacklistedPins();
-      if (!blacklisted.includes(pin)) {
-        blacklisted.push(pin);
-        saveBlacklistedPins(blacklisted);
-      }
-
-      renderAdminUserLists();
-      showToast('Agent Deleted & Permanently Blocked!');
+      permanentlyDeleteUser(pin).then(() => {
+        renderAdminUserLists();
+        showToast('Agent Deleted & Permanently Blocked!');
+      });
     }
 
     function switchTab(tabId, el) {
@@ -2147,7 +2201,7 @@
     let stayOnCategoryList = false;
     const summaryCategoryLabels = {
       interested: '👍 Interested', not_interested: '👎 Not Interested', time: '⏰ Timing / Notes',
-      call_not_pick: '📞 Not Pick', working: '💼 Working', coming: '🔔 Coming', bihar: '📍 Bihar'
+      call_not_pick: '📞 Not Pick', working: '💼 Working'
     };
     function openCategoryModal(category) {
       activeSummaryCategory = category;
